@@ -1,9 +1,12 @@
+import ThemButton from "./../componets/buttons/ThemButton";
+
 function NomeView() {
   return (
     <>
-      <span className="text-3xl text-red-600 md:text-green-400 sm:text-blue-700">
-        IT`S WORK!
-      </span>
+      <div>
+        <ThemButton />
+      </div>
+      <span className="text-red-500 dark:text-blue-600">IT`S WORK!</span>
     </>
   );
 }
