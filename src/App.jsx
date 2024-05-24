@@ -1,9 +1,13 @@
-import HomeView from './views/HomeView';
+import NavBar from "./componets/navigations/NavBar";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <HomeView />
+      <NavBar />
+      <div className="m-0 px-48">
+        <Outlet />
+      </div>
     </>
   );
 }
