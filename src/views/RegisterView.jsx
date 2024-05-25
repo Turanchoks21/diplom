@@ -1,9 +1,9 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import UserForm from "../componets/forms/UserForm";
-import FormInput from "../componets/inputs/FormInput";
-import FormButtonOutline from "../componets/buttons/FormButtonOutline";
-import FormButtonSolid from "../componets/buttons/FormButtonSolid";
+import UserForm from "../components/forms/UserForm";
+import FormInput from "../components/inputs/FormInput";
+import FormButtonOutline from "../components/buttons/FormButtonOutline";
+import FormButtonSolid from "../components/buttons/FormButtonSolid";
 
 function RegisterView() {
   const { t } = useTranslation();
