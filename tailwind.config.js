@@ -5,13 +5,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "midnight-black": "#1a1c22", //light
-        "violet-purple": "#8b45ef", // light
-        "pale-yellow": "#efec88", // light
-        "mint-blue": "#e2fffd", // dark
-        "hot-pink": "#dc3d9d", //dark
-        "neon-green": "#a8ed00", //dark
-      },
+        "midnight-black": "#07021e", //dark
+        "violet-purple": "#8b45ef", // dark
+        "pale-yellow": "#efec88", // dark
+        "lavender-mist": "#f0edff",
+      },     
     },
   },
   plugins: [],
