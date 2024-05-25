@@ -32,21 +32,21 @@ const DarkModeToggle = () => {
   return (
     <div>
       <button
-        className="dark:text-white"
+        className="text-pale-yellow hover:text-violet-purple"
         onClick={toggleDarkMode}
         onMouseOver={() => setIsSolid(true)}
         onMouseLeave={() => setIsSolid(false)}
       >
         {isIcons ? (
           isSolid ? (
-            <SolidMoon className="h-9" />
+            <SolidMoon className="h-8" />
           ) : (
-            <OutlineMoon className="h-9" />
+            <OutlineMoon className="h-8" />
           )
         ) : isSolid ? (
-          <SolidSun className="h-9" />
+          <SolidSun className="h-8" />
         ) : (
-          <OutlineSun className="h-9" />
+          <OutlineSun className="h-8" />
         )}
       </button>
     </div>
