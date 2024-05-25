@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --bg-color-light: #e2fffd;
-  --bg-color-dark: #1a1c22;
+  --bg-color-light: #f0edff;
+  --bg-color-dark: #07021e;
 }
 
 body {
@@ -14,4 +14,48 @@ body {
 
 body.dark {
   background-color: var(--bg-color-dark);
+}
+
+.form-group {
+  position: relative;
+  margin: 12px 0;
+}
+
+.form-group input {
+  font-size: 1.1rem;
+  border-radius: 12px;
+  border: #8b45ef solid 2px;
+  background-color: transparent;
+  color: #8b45ef;
+  transition: 0.15s all ease;
+}
+
+.form-group input:focus {
+  border-color: #8b45ef;
+  color: #8b45ef;
+  outline: none;
+  box-shadow: none;
+}
+
+.form-group input::placeholder {
+  color: transparent;
+}
+
+.form-group .form-label {
+  position: absolute;
+  top: 9px;
+  left: 0;
+  font-size: 1.1rem;
+  padding: 0 10px;
+  color: #8b45ef;
+  pointer-events: none;
+  transition: 0.15s all ease;
+}
+
+.form-group input:focus + .form-label,
+.form-group input:not(:placeholder-shown) + .form-label {
+  transform: translate(5px, -22px);
+  background-color: var(--bg-color-dark);
+  font-size: 14px;
+  color: #8b45ef;
 }
