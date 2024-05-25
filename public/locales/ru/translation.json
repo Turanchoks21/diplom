@@ -1,0 +1,14 @@
+{
+  "register": "Регистрация",
+  "login":"Вход",
+  "registerTitle": "Заходи, присаживайся",
+  "nickname": "Никнейм",
+  "password": "Пароль",
+  "data": "Дата рождения",
+  "registerUser": "Погнали!",
+  "haveAccount": "Я тут был ранее",
+  "forgotPassword": "Какой же пароль...",
+  "createUser": "Я тут впервые",
+  "loginTitle": "Заходи, путник",
+  "loginUser": "Я захожу!"
+}

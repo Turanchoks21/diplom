@@ -1,0 +1,14 @@
+{
+  "register": "Register",
+  "login":"Sing up",
+  "registerTitle": "Come in, have a seat",
+  "nickname": "Nickname",
+  "password": "Password",
+  "data": "Data",
+  "registerUser": "Let`s go!",
+  "haveAccount": "I've been here before",
+  "forgotPassword": "What's the password...",
+  "createUser": "It's my first time here",
+  "loginTitle": "Come in, traveler",
+  "loginUser": "I'm coming in!"
+}
