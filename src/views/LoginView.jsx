@@ -1,23 +1,27 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import UserForm from "../components/forms/UserForm";
+import FormWraper from "../components/forms/FormWraper";
 import FormInput from "../components/inputs/FormInput";
-import FormButtonOutline from "../components/buttons/FormButtonOutline";
-import FormButtonSolid from "../components/buttons/FormButtonSolid";
+import TitleWraper from "../components/forms/TitleWraper";
+import ButtonOutline from "../components/buttons/ButtonOutline";
+import ButtonSolid from "../components/buttons/ButtonSolid";
+import ButtonWraper from "../components/forms/ButtonWraper";
 
 function LoginView() {
   const { t } = useTranslation();
 
   return (
     <>
-      <UserForm>
-        <span className="text-xl text-pale-yellow">{t("loginTitle")}</span>
+      <FormWraper>
+        <TitleWraper>{t("loginTitle")}</TitleWraper>
         <FormInput>{t("nickname")}</FormInput>
-        <FormInput>{t("password")}</FormInput>
-        <FormButtonSolid>{t("loginUser")}</FormButtonSolid>
-        <FormButtonOutline>{t("forgotPassword")}</FormButtonOutline>
-        <FormButtonOutline to="/register">{t("createUser")}</FormButtonOutline>
-      </UserForm>
+        <FormInput type="password">{t("password")}</FormInput>
+        <ButtonWraper>
+          <ButtonSolid>{t("loginUser")}</ButtonSolid>
+          <ButtonOutline>{t("forgotPassword")}</ButtonOutline>
+          <ButtonOutline to="/register">{t("createUser")}</ButtonOutline>
+        </ButtonWraper>
+      </FormWraper>
     </>
   );
 }

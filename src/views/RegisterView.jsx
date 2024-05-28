@@ -1,23 +1,28 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import UserForm from "../components/forms/UserForm";
+import FormWraper from "../components/forms/FormWraper";
 import FormInput from "../components/inputs/FormInput";
-import FormButtonOutline from "../components/buttons/FormButtonOutline";
-import FormButtonSolid from "../components/buttons/FormButtonSolid";
+import TitleWraper from "../components/forms/TitleWraper";
+import ButtonOutline from "../components/buttons/ButtonOutline";
+import ButtonSolid from "../components/buttons/ButtonSolid";
+import ButtonWraper from "../components/forms/ButtonWraper";
 
 function RegisterView() {
   const { t } = useTranslation();
 
   return (
-    <UserForm>
-      <span className="text-xl text-pale-yellow">{t('registerTitle')}</span>
-      <FormInput>{t('nickname')}</FormInput>
+    <FormWraper>
+      <TitleWraper>{t("registerTitle")}</TitleWraper>
+      <FormInput>{t("nickname")}</FormInput>
       <FormInput>Email</FormInput>
-      <FormInput>{t('password')}</FormInput>
-      <FormInput>{t('data')}</FormInput>
-      <FormButtonSolid>{t('registerUser')}</FormButtonSolid>
-      <FormButtonOutline to='/login'>{t('haveAccount')}</FormButtonOutline>
-    </UserForm>
+      <FormInput type="password">{t("password")}</FormInput>
+      <FormInput type="password">{t("password")}</FormInput>
+      <FormInput>{t("data")}</FormInput>
+      <ButtonWraper>
+        <ButtonSolid>{t("registerUser")}</ButtonSolid>
+        <ButtonOutline to="/login">{t("haveAccount")}</ButtonOutline>
+      </ButtonWraper>
+    </FormWraper>
   );
 }
 
