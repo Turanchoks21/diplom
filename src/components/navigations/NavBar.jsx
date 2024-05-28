@@ -1,19 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import ThemButton from "./../buttons/ThemButton";
 import NavButton from "../buttons/NavButton";
 import LanguageSwitcher from "../buttons/LanguageSwitcher";
-import { Bars3Icon } from "@heroicons/react/20/solid";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
 import Logo from "../Logo";
 import { Link } from "react-router-dom";
+import clsx from "clsx";
 
 function NavBar() {
   const { t } = useTranslation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <>
       <div
-        className="fixed z-10 w-full mx-auto px-2 sm:px-6 lg:px-48
+        className="fixed items-center top-0 left-0 z-10 w-full mx-auto px-2 xxl:py-3 sm:px-6 lg:px-48
       bg-lavender-mist dark:bg-midnight-black  border-b-2
       border-blue-purple transition-color ease-in-out duration-500
       text-white
@@ -21,9 +27,12 @@ function NavBar() {
       >
         <div className="relative flex items-center justify-between h-16">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-            <Bars3Icon className="h-8 text-blue-purple dark:text-pale-yellow" />
+            <Bars3Icon
+              className="h-8 text-blue-purple dark:text-pale-yellow"
+              onClick={toggleMenu}
+            />
           </div>
-          <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+          <div className="flex-1 flex justify-center sm:items-stretch sm:justify-start">
             <div className="flex-shrink-0 transition ease-in-out hover:scale-110">
               <Link to="/">
                 <Logo />
@@ -46,29 +55,35 @@ function NavBar() {
           </div>
         </div>
       </div>
-
-      {/* <div
-        className="fixed flex justify-between md:px-48 p-5 py-2 items-center 
-        top-0 left-0 border-b-2 w-full bg-lavender-mist dark:bg-midnight-black
-        border-blue-purple transition-color ease-in-out duration-500"
+      {/* mob menu */}
+      <div
+        className={clsx("fixed z-20 inset-0 bg-gray-800 bg-opacity-75 transition-opacity", { hidden: !isMenuOpen })}
+        onClick={toggleMenu}
+      />
+      <div
+        className={clsx(
+          "fixed inset-0 bg-lavender-mist dark:bg-midnight-black z-30 transform transition-all duration-500",
+          { "-translate-x-full": !isMenuOpen, "translate-x-0": isMenuOpen }
+        )}
       >
-        <Bars3Icon className="h-8 text-blue-purple dark:text-pale-yellow" />
-        <div className="flex space-x-4 justify-center items-center">
-          <div
-            className="
-           bg-clip-text text-transparent bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045]
-           flex space-x-1 items-center"
-          >
-            <span className="font-bold text-2xl">LevelUp! </span>
-          </div>
-          <NavButton to="/register">{t("register")}</NavButton>
-          <NavButton to="/login">{t("login")}</NavButton>
-        </div>
-        <div className="flex space-x-3">
-          <LanguageSwitcher />
+        <div className="flex items-center justify-between p-4 border-b-2 border-blue-purple">
           <ThemButton />
+          <XMarkIcon
+            className="h-8 text-blue-purple dark:text-pale-yellow"
+            onClick={toggleMenu}
+          />
         </div>
-      </div> */}
+        <div className="p-4 flex justify-center items-center">
+          <div className="flex flex-col space-y-4">
+            <NavButton to="/register" onClick={toggleMenu}>
+              {t("register")}
+            </NavButton>
+            <NavButton to="/login" onClick={toggleMenu}>
+              {t("login")}
+            </NavButton>
+          </div>
+        </div>
+      </div>
     </>
   );
 }
