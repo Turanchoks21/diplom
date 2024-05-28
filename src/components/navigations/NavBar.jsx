@@ -57,7 +57,10 @@ function NavBar() {
       </div>
       {/* mob menu */}
       <div
-        className={clsx("fixed z-20 inset-0 bg-gray-800 bg-opacity-75 transition-opacity", { hidden: !isMenuOpen })}
+        className={clsx(
+          "fixed z-20 inset-0 bg-gray-800 bg-opacity-75 transition-opacity",
+          { hidden: !isMenuOpen }
+        )}
         onClick={toggleMenu}
       />
       <div
@@ -74,7 +77,7 @@ function NavBar() {
           />
         </div>
         <div className="p-4 flex justify-center items-center">
-          <div className="flex flex-col space-y-4">
+          <div className="flex flex-col space-y-4 w-full items-center">
             <NavButton to="/register" onClick={toggleMenu}>
               {t("register")}
             </NavButton>
