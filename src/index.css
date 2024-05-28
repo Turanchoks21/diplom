@@ -5,6 +5,10 @@
 :root {
   --bg-color-light: #f0edff;
   --bg-color-dark: #07021e;
+  --border-color: #4f4dc3;
+  --text-color: #4f4dc3;
+  --text-color-light: #07021e;
+  --text-color-dark: #efec88;
 }
 
 body {
@@ -18,23 +22,32 @@ body.dark {
 
 .form-group {
   position: relative;
-  margin: 12px 0;
 }
 
 .form-group input {
-  font-size: 1.1rem;
+  font-size: 1rem;
   border-radius: 12px;
-  border: #8b45ef solid 2px;
+  border: var(--border-color) solid 2px;
   background-color: transparent;
-  color: #8b45ef;
+  color: var(--text-color-light);
   transition: 0.15s all ease;
 }
 
+body.dark .form-group input {
+  border: var(--border-color) solid 2px;
+  color: var(--text-color-dark);
+}
+
 .form-group input:focus {
-  border-color: #8b45ef;
-  color: #8b45ef;
+  border-color: var(--border-color);
+  color: var(--text-color-light);
   outline: none;
   box-shadow: none;
+}
+
+body.dark .form-group input:focus {
+  border-color: var(--border-color);
+  color: var(--text-color-dark);
 }
 
 .form-group input::placeholder {
@@ -43,19 +56,47 @@ body.dark {
 
 .form-group .form-label {
   position: absolute;
-  top: 9px;
-  left: 0;
-  font-size: 1.1rem;
-  padding: 0 10px;
-  color: #8b45ef;
+  top: 13px;
+  left: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0 6px;
+  color: var(--text-color);
   pointer-events: none;
   transition: 0.15s all ease;
+  background-color: var(--bg-color-light);
+}
+
+body.dark .form-group .form-label {
+  background-color: var(--bg-color-dark);
 }
 
 .form-group input:focus + .form-label,
 .form-group input:not(:placeholder-shown) + .form-label {
-  transform: translate(5px, -22px);
-  background-color: var(--bg-color-dark);
-  font-size: 14px;
-  color: #8b45ef;
+  transform: translate(5px, -26px);
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+body.dark .form-group input:focus + .form-label,
+.form-group input:not(:placeholder-shown) + body.dark .form-label {
+  color: var(--text-color);
+}
+
+@media (min-width: 1920px) {
+  .form-group input {
+    font-size: 2rem;
+  }
+
+  .form-group .form-label {
+    top: 8px;
+    left: 8px;
+    font-size: 1.8rem;
+  }
+
+  .form-group input:focus + .form-label,
+  .form-group input:not(:placeholder-shown) + .form-label {
+    transform: translate(10px, -36px);
+    font-size: 1.8rem;
+  }
 }
