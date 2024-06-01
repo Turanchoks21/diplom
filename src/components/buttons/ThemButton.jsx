@@ -8,7 +8,7 @@ import {
   SunIcon as OutlineSun,
 } from "@heroicons/react/24/outline";
 
-const DarkModeToggle = () => {
+function ThemButton({ className }) {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isSolid, setIsSolid] = useState(false);
   const [isIcons, setIsIcons] = useState(false);
@@ -37,26 +37,28 @@ const DarkModeToggle = () => {
 
   return (
     <>
-      <button
-        className="text-blue-purple dark:text-pale-yellow"
-        onClick={toggleDarkMode}
-        onMouseOver={() => setIsSolid(true)}
-        onMouseLeave={() => setIsSolid(false)}
-      >
-        {isIcons ? (
-          isSolid ? (
-            <SolidMoon className="h-8 xxl:h-12" />
+      <div className={className}>
+        <button
+          className="text-blue-purple dark:text-pale-yellow"
+          onClick={toggleDarkMode}
+          onMouseOver={() => setIsSolid(true)}
+          onMouseLeave={() => setIsSolid(false)}
+        >
+          {isIcons ? (
+            isSolid ? (
+              <SolidMoon className="h-8 xxl:h-12" />
+            ) : (
+              <OutlineMoon className="h-8 xxl:h-12" />
+            )
+          ) : isSolid ? (
+            <SolidSun className="h-8 xxl:h-12" />
           ) : (
-            <OutlineMoon className="h-8 xxl:h-12" />
-          )
-        ) : isSolid ? (
-          <SolidSun className="h-8 xxl:h-12" />
-        ) : (
-          <OutlineSun className="h-8 xxl:h-12" />
-        )}
-      </button>
+            <OutlineSun className="h-8 xxl:h-12" />
+          )}
+        </button>
+      </div>
     </>
   );
-};
+}
 
-export default DarkModeToggle;
+export default ThemButton;
