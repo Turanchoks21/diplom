@@ -7,6 +7,9 @@ import App from "./App.jsx";
 import HomeView from "./views/HomeView.jsx";
 import RegisterView from "./views/RegisterView.jsx";
 import LoginView from "./views/LoginView.jsx";
+import MainPage from "./MainPage.jsx";
+import NewsView from "./views/NewsView.jsx";
+import FriendsView from "./views/FriendsView.jsx";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +27,20 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <LoginView />,
+      },
+    ],
+  },
+  {
+    path: "/main",
+    element: <MainPage />,
+    children: [
+      {
+        path: "",
+        element: <NewsView />,
+      },
+      {
+        path: "friends",
+        element: <FriendsView />,
       },
     ],
   },
