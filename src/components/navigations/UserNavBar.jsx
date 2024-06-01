@@ -6,8 +6,8 @@ import LanguageSwitcher from "../buttons/LanguageSwitcher";
 import Logo from "../Logo";
 import { Link } from "react-router-dom";
 import clsx from "clsx";
-import MenuNick from "./../wrapers/usersMenu/MenuNick";
-import MenuAvatar from "./../wrapers/usersMenu/MenuAvatar";
+import UserNick from "../wrapers/usersMenu/UserNick";
+import UserAvatar from "../wrapers/usersMenu/UserAvatar";
 
 import {
   Bars3Icon,
@@ -58,7 +58,7 @@ function NavBar() {
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <div className="flex space-x-3">
-              <MenuAvatar src="https://avatarfiles.alphacoders.com/374/thumb-1920-374883.png" />
+              <UserAvatar src="https://avatarfiles.alphacoders.com/374/thumb-1920-374883.png" />
             </div>
           </div>
         </div>
@@ -102,7 +102,7 @@ function NavBar() {
         )}
       >
         <div className="flex justify-between items-center gap-3 p-4 border-b-2 border-blue-purple">
-          <MenuNick>USER_NICK</MenuNick>
+          <UserNick>USER_NICK</UserNick>
           <ThemButton />
         </div>
 
@@ -133,9 +133,7 @@ function NavBar() {
       </div>
 
       {/* PC side bar */}
-      <div>
-
-      </div>
+      <div></div>
     </>
   );
 }
