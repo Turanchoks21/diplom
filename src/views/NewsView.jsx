@@ -13,7 +13,7 @@ import {
 function NewsView() {
   return (
     <>
-      <div className="flex flex-col w-full space-y-4 lg:max-w-5xl mx-auto">
+      <div className="flex flex-col w-full lg:max-w-5xl xxl:max-w-7xl mx-auto space-y-4">
         <NewsPost>
           <div className="flex justify-between">
             <div className="flex justify-between space-x-3">
@@ -25,7 +25,7 @@ function NewsView() {
               <NewsTime time="12:24" />
             </div>
           </div>
-          <div className="text-midnight-black dark:text-white">
+          <div className="text-midnight-black dark:text-white xxl:text-2xl">
             Hey Brawlers, here’s the info for our next three Twitch Drops
             Campaigns!
             <br />
@@ -33,16 +33,18 @@ function NewsView() {
             Streamers let us all know if you’ll be streaming during these Drops
             windows below.
           </div>
-          <NewsPhoto src="https://pbs.twimg.com/media/GOIeyQ4WgAAePNr?format=jpg&name=large" />
-          <div className="flex justify-between px-3">
+          <div className="flex justify-center">
+            <NewsPhoto src="https://pbs.twimg.com/media/GOIeyQ4WgAAePNr?format=jpg&name=large" />
+          </div>
+          <div className="flex justify-between">
             <NewsButton>
-              <ChatBubbleLeftEllipsisIcon className="h-8" />
+              <ChatBubbleLeftEllipsisIcon className="h-8 xxl:h-12" />
             </NewsButton>
             <NewsButton>
-              <ArrowsUpDownIcon className="h-8" />
+              <ArrowsUpDownIcon className="h-8 xxl:h-12" />
             </NewsButton>
             <NewsButton>
-              <HeartIcon className="h-8" />
+              <HeartIcon className="h-8 xxl:h-12" />
             </NewsButton>
           </div>
         </NewsPost>
@@ -57,23 +59,25 @@ function NewsView() {
               <NewsTime time="04:00" />
             </div>
           </div>
-          <div className="text-midnight-black dark:text-white">
+          <div className="text-midnight-black dark:text-white xxl:text-2xl">
             MVPs, Tuesday is the big day! Figured you all want to see a launch
             plan: - For Consoles: We’ll be in Maintenance Mode till Tuesday, May
             28 @ 4:00AM PT / 7:00AM ET / 11:00 AM UTC - For PC: We’ll be in
             Maintenance Mode till Tuesday, May 28 @ 10:00AM PT / 1:00PM ET/ 5:00
             PM UTC - At
           </div>
-          <NewsPhoto src="https://pbs.twimg.com/media/GOi7H1TboAAaw3r?format=jpg&name=large" />
+          <div className="flex justify-center">
+            <NewsPhoto src="https://pbs.twimg.com/media/GOi7H1TboAAaw3r?format=jpg&name=large" />
+          </div>
           <div className="flex justify-between px-3">
             <NewsButton>
-              <ChatBubbleLeftEllipsisIcon className="h-8" />
+              <ChatBubbleLeftEllipsisIcon className="h-8 xxl:h-12" />
             </NewsButton>
             <NewsButton>
-              <ArrowsUpDownIcon className="h-8" />
+              <ArrowsUpDownIcon className="h-8 xxl:h-12" />
             </NewsButton>
             <NewsButton>
-              <HeartIcon className="h-8" />
+              <HeartIcon className="h-8 xxl:h-12" />
             </NewsButton>
           </div>
         </NewsPost>
@@ -88,23 +92,25 @@ function NewsView() {
               <NewsTime time="03:24" />
             </div>
           </div>
-          <div className="text-midnight-black dark:text-white">
+          <div className="text-midnight-black dark:text-white xxl:text-2xl">
             The PLUNDER PRESSURE Backstage Pass will be ending soon! How many
             rewards have you unlocked?
             <br />
             <br />
             The brand new HAUTE TOPIC Backstage Pass starts on June 1st!
           </div>
-          <NewsPhoto src="https://pbs.twimg.com/media/GOyVU46XMAAk1HE?format=jpg&name=large" />
+          <div className="flex justify-center">
+            <NewsPhoto src="https://pbs.twimg.com/media/GOyVU46XMAAk1HE?format=jpg&name=large" />
+          </div>
           <div className="flex justify-between px-3">
             <NewsButton>
-              <ChatBubbleLeftEllipsisIcon className="h-8" />
+              <ChatBubbleLeftEllipsisIcon className="h-8 xxl:h-12" />
             </NewsButton>
             <NewsButton>
-              <ArrowsUpDownIcon className="h-8" />
+              <ArrowsUpDownIcon className="h-8 xxl:h-12" />
             </NewsButton>
             <NewsButton>
-              <HeartIcon className="h-8" />
+              <HeartIcon className="h-8 xxl:h-12" />
             </NewsButton>
           </div>
         </NewsPost>
