@@ -1,7 +1,6 @@
 import NavButton from "../buttons/NavButton";
 import { useTranslation } from "react-i18next";
 import {
-  Bars3Icon,
   NewspaperIcon,
   UsersIcon,
   ChatBubbleLeftRightIcon,
