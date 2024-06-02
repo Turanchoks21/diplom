@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function ButtonOutline({ to, children, type }) {
+function ButtonOutline({ to, children, type, onClick }) {
   return (
     <Link
       to={to}
@@ -12,7 +12,7 @@ function ButtonOutline({ to, children, type }) {
       dark:hover:border-blue-purple rounded-xl
       "
     >
-      <button type={type}>{children}</button>
+      <button onClick={onClick} type={type}>{children}</button>
     </Link>
   );
 }

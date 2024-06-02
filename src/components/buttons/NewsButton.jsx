@@ -1,9 +1,9 @@
-function NewsButton({ children }) {
+function NewsButton({ children, onClick }) {
   return (
     <>
-      <div className="text-midnight-black dark:text-pale-yellow">
+      <button onClick={onClick} className="text-midnight-black dark:text-pale-yellow">
         {children}
-      </div>
+      </button>
     </>
   );
 }
