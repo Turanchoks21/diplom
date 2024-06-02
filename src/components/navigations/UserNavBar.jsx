@@ -6,8 +6,8 @@ import LanguageSwitcher from "../buttons/LanguageSwitcher";
 import Logo from "../Logo";
 import { Link } from "react-router-dom";
 import clsx from "clsx";
-import UserNick from "../wrapers/usersMenu/UserNick";
-import UserAvatar from "../wrapers/usersMenu/UserAvatar";
+import UserNick from "../wrapers/users/UserNick";
+import UserAvatar from "../wrapers/users/UserAvatar";
 
 import {
   Bars3Icon,
@@ -45,7 +45,7 @@ function NavBar() {
           </div>
           <div className="flex-1 flex justify-center xl:items-stretch xl:justify-start">
             <div className="flex-shrink-0 transition ease-in-out hover:scale-110">
-              <Link to="/">
+              <Link to="/main">
                 <Logo />
               </Link>
             </div>
@@ -53,7 +53,7 @@ function NavBar() {
           <div className="absolute inset-y-0 right-0 flex items-center sm:static sm:inset-auto ">
             <div className="flex space-x-3">
               <div className="hidden xl:block">
-              <ThemButton />
+                <ThemButton />
               </div>
               <UserAvatar src="https://avatarfiles.alphacoders.com/374/thumb-1920-374883.png" />
             </div>
