@@ -10,5 +10,13 @@
   "forgotPassword": "Какой же пароль...",
   "createUser": "Я тут впервые",
   "loginTitle": "Заходи, путник",
-  "loginUser": "Я захожу!"
+  "loginUser": "Я захожу!",
+  "news": "Новости",
+  "friends": "Друзья",
+  "chats": "Чаты",
+  "liked": "Лайки",
+  "settings": "Настройки",
+  "welcome": "Начать общение!",
+  "letsDoThis": "Давай сделаем это",
+  "searhFriends": "Найти друзей"
 }

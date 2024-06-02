@@ -1,6 +1,6 @@
 {
   "register": "Регістрація",
-  "login":"Вхід",
+  "login": "Вхід",
   "registerTitle": "Заходь, сідай",
   "nickname": "Нікнейм",
   "password": "Пароль",
@@ -10,5 +10,13 @@
   "forgotPassword": "Який же пароль...",
   "createUser": "Я тут уперше",
   "loginTitle": "Заходь, мандрівник",
-  "loginUser": "Я заходжу!"
+  "loginUser": "Я заходжу!",
+  "news": "Новини",
+  "friends": "Друзі",
+  "chats": "Чати",
+  "liked": "Вподобайки",
+  "settings": "Налаштування",
+  "welcome": "Почати спілкування!",
+  "letsDoThis": "Давай зробимо це",
+  "searhFriends": "Знайти дрізів"
 }

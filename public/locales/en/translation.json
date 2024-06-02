@@ -1,6 +1,6 @@
 {
   "register": "Register",
-  "login":"Sing up",
+  "login": "Sing up",
   "registerTitle": "Come in, have a seat",
   "nickname": "Nickname",
   "password": "Password",
@@ -10,5 +10,13 @@
   "forgotPassword": "What's the password...",
   "createUser": "It's my first time here",
   "loginTitle": "Come in, traveler",
-  "loginUser": "I'm coming in!"
+  "loginUser": "I'm coming in!",
+  "news": "News",
+  "friends": "Friedns",
+  "chats": "Chats",
+  "liked": "Liked",
+  "settings": "Settings",
+  "welcome": "Start chating!",
+  "letsDoThis": "Let`s do this",
+  "searhFriends": "Searh friends"
 }
