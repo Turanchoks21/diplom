@@ -18,21 +18,30 @@ function ThemButton({ className }) {
     setIsDarkMode(newDarkMode);
     setIsIcons(!isIcons);
     document.body.classList.toggle("dark", newDarkMode);
+    localStorage.setItem("isDarkMode", newDarkMode);
   };
 
   useEffect(() => {
-    const checkDarkModePreference = () => {
-      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        setIsDarkMode(true);
-        setIsIcons(true);
-        document.body.classList.add("dark");
-      } else {
-        setIsIcons(false);
-        document.body.classList.remove("dark");
-      }
-    };
+    const savedDarkMode = localStorage.getItem("isDarkMode");
+    if (savedDarkMode !== null) {
+      const isDark = savedDarkMode === "true";
+      setIsDarkMode(isDark);
+      setIsIcons(isDark);
+      document.body.classList.toggle("dark", isDark);
+    } else {
+      const checkDarkModePreference = () => {
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          setIsDarkMode(true);
+          setIsIcons(true);
+          document.body.classList.add("dark");
+        } else {
+          setIsIcons(false);
+          document.body.classList.remove("dark");
+        }
+      };
 
-    checkDarkModePreference();
+      checkDarkModePreference();
+    }
   }, []);
 
   return (
