@@ -29,35 +29,32 @@ function NavBar() {
   return (
     <>
       <div
-        className="fixed z-10 w-full mx-auto px-2  lg:px-48
-      bg-lavender-mist dark:bg-midnight-black  border-b-2
+        className="fixed z-10 w-full mx-auto px-2 lg:px-48 xl:px-56
+      bg-lavender-mist dark:bg-midnight-black border-b-2
       border-blue-purple transition-color ease-in-out duration-500
       text-white
       "
       >
         <div className="relative flex items-center justify-between h-16">
-          <div className="absolute inset-y-0 left-0 flex items-center lg:hidden">
+          <div className="absolute inset-y-0 left-0 flex items-center xl:hidden">
             <Bars3Icon
               className="h-8 text-blue-purple dark:text-pale-yellow hidden md:block"
               onClick={toggleMenu}
             />
             <ThemButton className="md:hidden" />
           </div>
-          <div className="flex-1 flex justify-center lg:items-stretch lg:justify-start">
+          <div className="flex-1 flex justify-center xl:items-stretch xl:justify-start">
             <div className="flex-shrink-0 transition ease-in-out hover:scale-110">
               <Link to="/">
                 <Logo />
               </Link>
             </div>
-            {/* <div className="hidden lg:block lg:ml-6">
-              <div className="flex justify-center items-center space-x-4">
-                <NavButton to="/register">{t("register")}</NavButton>
-                <NavButton to="/login">{t("login")}</NavButton>
-              </div>
-            </div> */}
           </div>
-          <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <div className="absolute inset-y-0 right-0 flex items-center sm:static sm:inset-auto ">
             <div className="flex space-x-3">
+              <div className="hidden xl:block">
+              <ThemButton />
+              </div>
               <UserAvatar src="https://avatarfiles.alphacoders.com/374/thumb-1920-374883.png" />
             </div>
           </div>
@@ -75,13 +72,13 @@ function NavBar() {
           <NavButton to="/main/friends">
             <UsersIcon className="h-8" />
           </NavButton>
-          <NavButton>
+          <NavButton to="/main/chats">
             <ChatBubbleLeftRightIcon className="h-8" />
           </NavButton>
-          <NavButton>
+          <NavButton to="/main/liked">
             <HeartIcon className="h-8" />
           </NavButton>
-          <NavButton>
+          <NavButton to="/main/settings">
             <Cog6ToothIcon className="h-8" />
           </NavButton>
         </div>
@@ -131,9 +128,6 @@ function NavBar() {
           </div>
         </div>
       </div>
-
-      {/* PC side bar */}
-      <div></div>
     </>
   );
 }

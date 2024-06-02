@@ -19,7 +19,7 @@ function NavBar() {
   return (
     <>
       <div
-        className="fixed items-center top-0 left-0 z-10 w-full mx-auto px-2 xxl:py-3 sm:px-6 lg:px-48
+        className="fixed items-center top-0 left-0 z-10 w-full mx-auto px-2 xxl:py-3 sm:px-6 lg:px-56
       bg-lavender-mist dark:bg-midnight-black  border-b-2
       border-blue-purple transition-color ease-in-out duration-500
       text-white
