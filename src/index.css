@@ -83,6 +83,19 @@ body.dark .form-group input:focus + .form-label,
   color: var(--text-color);
 }
 
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4f4dc3;
+  border-radius: 10px;
+}
+
 @media (min-width: 1920px) {
   .form-group input {
     font-size: 2rem;
