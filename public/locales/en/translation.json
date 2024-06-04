@@ -18,5 +18,10 @@
   "settings": "Settings",
   "welcome": "Start chating!",
   "letsDoThis": "Let`s do this",
-  "searhFriends": "Searh friends"
+  "searhFriends": "Searh friends",
+  "noFriends": "It`s time to add friends",
+  "nobodyHere": "There's nobody here yet",
+  "inFriends": "As friends",
+  "globalUsers": "Global search",
+  "startSearch": "We'll find someone"
 }
