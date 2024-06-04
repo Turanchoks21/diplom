@@ -1,6 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider, useLocation  } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 import "./index.css";
 import "./i18n";
 import App from "./App.jsx";
@@ -11,7 +14,7 @@ import MainPage from "./MainPage.jsx";
 import NewsView from "./views/NewsView.jsx";
 import FriendsView from "./views/FriendsView.jsx";
 import ChatsView from "./views/ChatsView.jsx";
-import LickedView from "./views/LickedView.jsx";
+import LikedView from "./views/LikedView.jsx";
 import SettingsView from "./views/SettingsView.jsx";
 
 const router = createBrowserRouter([
@@ -51,7 +54,7 @@ const router = createBrowserRouter([
       },
       {
         path: "liked",
-        element: <LickedView />,
+        element: <LikedView />,
       },
       {
         path: "settings",
