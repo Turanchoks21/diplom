@@ -15,8 +15,8 @@ function FriendsView() {
   const { t } = useTranslation();
 
   const users = UsersData();
-  const frieds = FriendsData();
-  // const frieds = [];
+  const friends = FriendsData();
+  // const friends = [];
 
   const [isSearchUser, setIsSearchUser] = useState(false);
   const [searchUserValue, setSearchUserValue] = useState("");
@@ -25,13 +25,13 @@ function FriendsView() {
     setSearchUserValue(event.target.value);
   };
 
-  const filteredFriends = frieds.filter((friend) => {
+  const filteredFriends = friends.filter((friend) => {
     return friend.nickName
       .toLowerCase()
       .includes(searchUserValue.toLowerCase());
   });
 
-  const friendsIds = new Set(frieds.map((friend) => friend.id));
+  const friendsIds = new Set(friends.map((friend) => friend.id));
   const filteredUsers = users.filter((user) => {
     return (
       user.nickName.toLowerCase().includes(searchUserValue.toLowerCase()) &&
@@ -50,13 +50,16 @@ function FriendsView() {
   return (
     <>
       <div className="space-y-4">
-        <div className="flex justify-center rounded-xl p-4 border-2 border-blue-purple">
+        <div
+          className="flex justify-center rounded-xl p-4 border-2 border-blue-purple
+          "
+        >
           {isSearchUser ? (
             <div className="flex justify-between w-full space-x-4">
-              <MagnifyingGlassIcon className="h-8 xxl:h-12 text-midnight-black dark:text-pale-yellow" />
+              <MagnifyingGlassIcon className="h-8 xxl:h-12 " />
               <input
-                className="w-full focus:outline-none bg-transparent text-midnight-black 
-                dark:text-pale-yellow text-lg xxl:text-2xl  border-b-2 border-midnight-black
+                className="w-full focus:outline-none bg-transparent
+                 text-lg xxl:text-2xl border-b-2 border-midnight-black
                 dark:border-pale-yellow"
                 value={searchUserValue}
                 onChange={handleChange}
@@ -66,7 +69,7 @@ function FriendsView() {
                   clearSearchInput();
                   toggleSearch();
                 }}
-                className="h-8 xxl:h-12 text-midnight-black dark:text-pale-yellow"
+                className="h-8 xxl:h-12"
               />
             </div>
           ) : (
@@ -80,18 +83,14 @@ function FriendsView() {
           {isSearchUser ? (
             <div>
               {searchUserValue === "" ? (
-                <div
-                  className="flex justify-center items-center text-xl xxl:text-3xl
-                  text-midnight-black dark:text-pale-yellow  
-                "
-                >
+                <div className="flex justify-center items-center text-xl xxl:text-3xl">
                   {t("startSearch")}
                 </div>
               ) : (
                 <div>
                   <div className="space-y-5">
                     <span
-                      className="text-xl xxl:text-3xl pb-1 text-midnight-black dark:text-pale-yellow border-b-2 
+                      className="text-xl xxl:text-3xl pb-1 border-b-2 
                        border-midnight-black dark:border-pale-yellow"
                     >
                       {t("inFriends")}
@@ -103,7 +102,7 @@ function FriendsView() {
                   <div className="my-10" />
                   <div className="space-y-5">
                     <span
-                      className="text-xl xxl:text-3xl pb-1 text-midnight-black dark:text-pale-yellow border-b-2 
+                      className="text-xl xxl:text-3xl pb-1 border-b-2 
                        border-midnight-black dark:border-pale-yellow"
                     >
                       {t("globalUsers")}
@@ -117,9 +116,9 @@ function FriendsView() {
             </div>
           ) : (
             <div>
-              {frieds.length !== 0 ? (
+              {friends.length !== 0 ? (
                 <div>
-                  {frieds.map((fried) => (
+                  {friends.map((fried) => (
                     <FriendListItem key={fried.id} friend={fried} />
                   ))}
                 </div>
@@ -128,7 +127,7 @@ function FriendsView() {
                   className="flex justify-center items-center text-blue-purple font-semibold 
                   text-xl xxl:text-3xl"
                 >
-                  <span className="flex flex-col text-xl xxl:text-3xl text-midnight-black dark:text-pale-yellow">
+                  <span className="flex flex-col text-xl xxl:text-3xl  ">
                     {t("nobodyHere")}
                     <FaceFrownIcon className="h-10 xxl:h-14" />
                   </span>
