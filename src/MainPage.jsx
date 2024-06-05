@@ -1,7 +1,7 @@
 import UserNavBar from "./components/navigations/UserNavBar";
 import UserSideBar from "./components/navigations/UserSideBar";
 import { Outlet } from "react-router-dom";
-import ScrollToTop from "./ScrollToTop";
+import ScrollToTop from "./router/ScrollToTop";
 
 function MainPageView() {
   return (
