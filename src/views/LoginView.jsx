@@ -17,7 +17,7 @@ function LoginView() {
         <FormInput>{t("nickname")}</FormInput>
         <FormInput type="password">{t("password")}</FormInput>
         <ButtonWraper>
-          <ButtonSolid>{t("loginUser")}</ButtonSolid>
+          <ButtonSolid to="/main">{t("loginUser")}</ButtonSolid>
           <ButtonOutline>{t("forgotPassword")}</ButtonOutline>
           <ButtonOutline to="/register">{t("createUser")}</ButtonOutline>
         </ButtonWraper>

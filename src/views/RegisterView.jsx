@@ -19,7 +19,7 @@ function RegisterView() {
       <FormInput type="password">{t("password")}</FormInput>
       <FormInput>{t("data")}</FormInput>
       <ButtonWraper>
-        <ButtonSolid>{t("registerUser")}</ButtonSolid>
+        <ButtonSolid to="/main">{t("registerUser")}</ButtonSolid>
         <ButtonOutline to="/login">{t("haveAccount")}</ButtonOutline>
       </ButtonWraper>
     </FormWraper>
