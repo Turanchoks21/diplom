@@ -4,7 +4,7 @@ function ButtonOutline({ to, children, type, onClick }) {
   return (
     <Link
       to={to}
-      className="py-2 xxl:py-3 w-full font-semibold text-center text-lg md:text-xl xxl:text-3xl
+      className="p-2 xxl:p-3 w-full font-semibold text-center text-lg md:text-xl xxl:text-3xl
       text-midnight-black dark:text-pale-yellow bg-clip 
       border-2 border-midnight-black
       dark:border-pale-yellow hover:text-blue-purple
