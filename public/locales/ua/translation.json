@@ -23,5 +23,13 @@
   "nobodyHere": "Тут поки що нікого немає",
   "inFriends": "У друзях",
   "globalUsers": "Глобальний пошук",
-  "startSearch": "Зараз когось знайдемо"
+  "startSearch": "Зараз когось знайдемо",
+  "language": "Мова",
+  "preferences": "Вподобання",
+  "select": "Обрати",
+  "userSettings": "Налаштування профілю",
+  "open": "Відкрити",
+  "blackList": "Чорний список",
+  "deleteUser": "Видалити профіль",
+  "delete": "ВИДАЛИТИ"
 }

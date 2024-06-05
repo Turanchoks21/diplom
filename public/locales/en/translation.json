@@ -23,5 +23,13 @@
   "nobodyHere": "There's nobody here yet",
   "inFriends": "As friends",
   "globalUsers": "Global search",
-  "startSearch": "We'll find someone"
+  "startSearch": "We'll find someone",
+  "language": "Language",
+  "preferences": "Preferences",
+  "select": "Select",
+  "userSettings": "Profile settings",
+  "open": "Open",
+  "blackList": "Black list",
+  "deleteUser": "Delete profile",
+  "delete": "DELETE"
 }
