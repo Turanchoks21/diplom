@@ -12,9 +12,9 @@ function NavBar() {
   const { t } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
+  function toggleMenu() {
     setIsMenuOpen(!isMenuOpen);
-  };
+  }
 
   return (
     <>
