@@ -8,9 +8,13 @@ import {
 } from "@heroicons/react/24/outline";
 import ButtonOutline from "./../components/buttons/ButtonOutline";
 import { useState } from "react";
+import PreferencesModal from "../components/modals/PreferencesModal";
+import ProfileSettingsModal from "../components/modals/ProfileSettingsModal";
+import BlackListModal from "../components/modals/BlackListModal";
 
 function SettingsView() {
   const { t, i18n } = useTranslation();
+
   const languages = ["ua", "ru", "en"];
   const [currentLangIndex, setCurrentLangIndex] = useState(
     languages.indexOf(i18n.language)
@@ -22,13 +26,17 @@ function SettingsView() {
     setCurrentLangIndex(nextLangIndex);
   };
 
+  const [isPreferencesOpen, setIsPreferencesOpen] = useState(false);
+  const [isProfileSettingsOpen, setIsProfileSettingsOpen] = useState(false);
+  const [isBlackListOpen, setIsBlackListOpen] = useState(false);
+
   return (
     <>
       <div
         className="flex justify-center w-full font-semibold rounded-xl p-4 border-2 border-blue-purple 
         text-xl xxl:text-3xl text-midnight-black dark:text-pale-yellow"
       >
-        <div className="flex flex-col w-full space-y-7">
+        <div className="flex flex-col w-full space-y-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-2">
               <GlobeAltIcon className="h-8 xxl:h-12" />
@@ -46,7 +54,9 @@ function SettingsView() {
               <span>{t("userSettings")}</span>
             </div>
             <div>
-              <ButtonOutline>{t("open")}</ButtonOutline>
+              <ButtonOutline onClick={() => setIsProfileSettingsOpen(true)}>
+                {t("open")}
+              </ButtonOutline>
             </div>
           </div>
           <div className="flex justify-between items-center">
@@ -55,7 +65,9 @@ function SettingsView() {
               <span>{t("preferences")}</span>
             </div>
             <div>
-              <ButtonOutline>{t("select")}</ButtonOutline>
+              <ButtonOutline onClick={() => setIsPreferencesOpen(true)}>
+                {t("select")}
+              </ButtonOutline>
             </div>
           </div>
           <div className="flex justify-between items-center">
@@ -64,29 +76,41 @@ function SettingsView() {
               <span>{t("blackList")}</span>
             </div>
             <div>
-              <ButtonOutline>{t("open")}</ButtonOutline>
+              <ButtonOutline onClick={() => setIsBlackListOpen(true)}>
+                {t("open")}
+              </ButtonOutline>
             </div>
           </div>
-
-          <div className="grid grid-rows-subgrid gap-4 row-span-3">
-            <div className="flex justify-between items-center row-start-3">
-              <div className="flex items-center space-x-2 text-red-500">
-                <TrashIcon className="h-8 xxl:h-12" />
-                <span>{t("deleteUser")}</span>
-              </div>
-              <div>
-                <button
-                  className="p-2 xxl:p-3 w-full font-semibold text-center text-lg md:text-xl xxl:text-3xl
+          <div className="border border-blue-purple" />
+          <div className="flex justify-between items-center">
+            <div className="flex items-center space-x-2 text-red-500">
+              <TrashIcon className="h-8 xxl:h-12" />
+              <span>{t("deleteUser")}</span>
+            </div>
+            <div>
+              <button
+                className="p-2 xxl:p-3 w-full font-semibold text-center text-lg md:text-xl xxl:text-3xl
                 text-red-500 border-2 rounded-xl border-red-500
                  hover:text-red-700 hover:border-red-700"
-                >
-                  {t("delete")}
-                </button>
-              </div>
+              >
+                {t("delete")}
+              </button>
             </div>
           </div>
         </div>
       </div>
+      <PreferencesModal
+        isOpen={isPreferencesOpen}
+        onClose={() => setIsPreferencesOpen(false)}
+      />
+      <ProfileSettingsModal
+        isOpen={isProfileSettingsOpen}
+        onClose={() => setIsProfileSettingsOpen(false)}
+      />
+      <BlackListModal
+        isOpen={isBlackListOpen}
+        onClose={() => setIsBlackListOpen(false)}
+      />
     </>
   );
 }
