@@ -21,9 +21,9 @@ function FriendsView() {
   const [isSearchUser, setIsSearchUser] = useState(false);
   const [searchUserValue, setSearchUserValue] = useState("");
 
-  const handleChange = (event) => {
+  function handleChange(event) {
     setSearchUserValue(event.target.value);
-  };
+  }
 
   const filteredFriends = friends.filter((friend) => {
     return friend.nickName
@@ -52,6 +52,7 @@ function FriendsView() {
       <div className="space-y-4">
         <div
           className="flex justify-center rounded-xl p-4 border-2 border-blue-purple
+          text-midnight-black dark:text-pale-yellow
           "
         >
           {isSearchUser ? (
@@ -79,7 +80,10 @@ function FriendsView() {
             </NavButton>
           )}
         </div>
-        <div className="flex flex-col w-full mx-auto border-2 border-blue-purple rounded-xl p-5 space-y-4">
+        <div
+          className="flex flex-col w-full mx-auto border-2 border-blue-purple rounded-xl p-5 space-y-4
+        text-midnight-black dark:text-pale-yellow font-semibold"
+        >
           {isSearchUser ? (
             <div>
               {searchUserValue === "" ? (
