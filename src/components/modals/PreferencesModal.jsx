@@ -8,6 +8,7 @@ import {
 import GameData from "../../data/GameData";
 import GameLogo from "../wrapers/news/GameLogo";
 import { useState } from "react";
+import VirtualScroll from "../VirtualScroll";
 
 function PreferencesModal({ isOpen, onClose }) {
   const { t } = useTranslation();
@@ -44,7 +45,7 @@ function PreferencesModal({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed z-30 inset-0 overflow-y-auto">
+    <div className="fixed h-screen z-30 inset-0 overflow-y-auto">
       <div
         className="flex items-center justify-center min-h-screen 
       text-midnight-black dark:text-pale-yellow font-semibold"
@@ -86,32 +87,39 @@ function PreferencesModal({ isOpen, onClose }) {
               <XMarkIcon className="h-8 xxl:h-12" onClick={clearSearchInput} />
             </div>
           </div>
-          <div className="p-4 md:p-5 space-y-4 ">
-            {filteredGames.map((game) => (
-              <div
-                key={game.id}
-                className="flex justify-center items-center w-full border-2 rounded-xl p-2 border-blue-purple mb-4"
-              >
-                <div className="flex justify-between w-full">
-                  <div className="flex justify-between items-center space-x-3">
-                    <GameLogo src={game.logo} />
-                    <span>{game.name}</span>
-                  </div>
-                  <div className="flex justify-center items-center">
-                    <button
-                      className="flex justify-center items-center"
-                      onClick={() => handlePreference(game.id)}
-                    >
-                      {preferences[game.id] ? (
-                        <MinusCircleIcon className="h-8 xxl:h-12 text-red-500" />
-                      ) : (
-                        <PlusCircleIcon className="h-8 xxl:h-12 text-green-500" />
-                      )}
-                    </button>
+          <div className="px-1 py-4 md:p-5 h-[400px]">
+            <VirtualScroll
+              itemCount={filteredGames.length}
+              viewportHeight={400}
+              rowHeight={100}
+              nodePadding={1}
+            >
+              {filteredGames.map((game) => (
+                <div
+                  key={game.id}
+                  className="flex justify-center items-center w-full border-2 rounded-xl p-2 border-blue-purple mb-4"
+                >
+                  <div className="flex justify-between w-full">
+                    <div className="flex justify-between items-center space-x-3">
+                      <GameLogo src={game.logo} />
+                      <span>{game.name}</span>
+                    </div>
+                    <div className="flex justify-center items-center">
+                      <button
+                        className="flex justify-center items-center"
+                        onClick={() => handlePreference(game.id)}
+                      >
+                        {preferences[game.id] ? (
+                          <MinusCircleIcon className="h-8 xxl:h-12 text-red-500" />
+                        ) : (
+                          <PlusCircleIcon className="h-8 xxl:h-12 text-green-500" />
+                        )}
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </VirtualScroll>
           </div>
         </div>
       </div>
