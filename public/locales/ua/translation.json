@@ -31,5 +31,11 @@
   "open": "Відкрити",
   "blackList": "Чорний список",
   "deleteUser": "Видалити профіль",
-  "delete": "ВИДАЛИТИ"
+  "delete": "ВИДАЛИТИ",
+  "confirmPassword": "Повторіть пароль",
+  "emptyField": "Поле не повинно бути порожнім",
+  "errorNick": "Нікнейм має бути 3-16 символів",
+  "invalidEmail": "Неправильний email",
+  "errorPassword": "Пароль має бути 8-32 символи",
+  "errorPasswordConfirm": "Паролі не збігаються"
 }
