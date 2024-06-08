@@ -25,16 +25,14 @@ body.dark {
 }
 
 .form-group input {
+  width: 100%;
   font-size: 1rem;
-  border-radius: 12px;
-  border: var(--border-color) solid 2px;
   background-color: transparent;
   color: var(--text-color-light);
   transition: 0.15s all ease;
 }
 
 body.dark .form-group input {
-  border: var(--border-color) solid 2px;
   color: var(--text-color-dark);
 }
 
@@ -46,7 +44,6 @@ body.dark .form-group input {
 }
 
 body.dark .form-group input:focus {
-  border-color: var(--border-color);
   color: var(--text-color-dark);
 }
 
@@ -61,7 +58,6 @@ body.dark .form-group input:focus {
   font-size: 0.9rem;
   font-weight: 600;
   padding: 0 6px;
-  color: var(--text-color);
   pointer-events: none;
   transition: 0.15s all ease;
   background-color: var(--bg-color-light);
