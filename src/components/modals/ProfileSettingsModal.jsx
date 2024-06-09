@@ -1,59 +1,193 @@
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { XMarkIcon, PencilSquareIcon } from "@heroicons/react/24/outline";
+import Dropzone from "../AvatarUploader";
+import ButtonOutline from "../buttons/ButtonOutline";
+import ButtonSolid from "./../buttons/ButtonSolid";
 
-function ProfileSettingsModal({ isOpen, onClose }) {
+function ProfileSettingsModal({ isOpen, onClose, userIndex }) {
   const { t } = useTranslation();
+  const [user, setUser] = useState(null);
+  const [isEditing, setIsEditing] = useState({
+    nick_name: false,
+    email: false,
+    birthDate: false,
+  });
+  const [editedUser, setEditedUser] = useState({
+    nick_name: "",
+    email: "",
+    birthDate: "",
+  });
 
-  if (!isOpen) return null;
+  useEffect(() => {
+    if (isOpen) {
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      setUser(users[userIndex]);
+      setEditedUser({
+        nick_name: users[userIndex]?.nick_name || "",
+        email: users[userIndex]?.email || "",
+        birthDate: users[userIndex]?.birthDate || "",
+      });
+    }
+  }, [isOpen, userIndex]);
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setEditedUser((prev) => ({ ...prev, [name]: value }));
+  }
+
+  function handleSave() {
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    users[userIndex] = { ...users[userIndex], ...editedUser };
+    localStorage.setItem("users", JSON.stringify(users));
+    setUser(users[userIndex]);
+    setIsEditing({ nick_name: false, email: false, birthDate: false });
+    onClose();
+  }
+
+  function handleEdit(field) {
+    setIsEditing((prev) => ({ ...prev, [field]: true }));
+  }
+
+  function handleCancel() {
+    setEditedUser({
+      nick_name: user.nick_name,
+      email: user.email,
+      birthDate: user.birthDate,
+    });
+    setIsEditing({ nick_name: false, email: false, birthDate: false });
+    onClose();
+  }
+
+  const inputStyle =
+    "border-2 rounded-xl border-blue-purple bg-transparent text-midnight-black dark:text-pale-yellow px-2 focus:outline-none";
+
+  if (!isOpen || !user) return null;
 
   return (
-    <div className="fixed z-30 inset-0 overflow-y-auto" >
-      <div className="flex items-center justify-center min-h-screen ">
+    <div className="fixed z-30 inset-0 overflow-y-auto">
+      <div
+        className="flex items-center bg-gray-800 bg-opacity-75 transition-opacity
+       justify-center min-h-screen"
+      >
+        <div className="fixed" aria-hidden="true" onClick={onClose}></div>
         <div
-          className="fixed inset-0 bg-gray-800 bg-opacity-75 transition-opacity"
-          aria-hidden="true"
-          onClick={onClose}
-        ></div>
-        <div
-          className="bg-lavender-mist dark:bg-midnight-black rounded-xl overflow-hidden shadow-xl
-          transform transition-all max-w-2xl w-full border-2 border-blue-purple"
+          className="bg-lavender-mist dark:bg-midnight-black rounded-xl
+          overflow-hidden shadow-xl transform transition-all max-w-2xl w-full border-2 border-blue-purple"
         >
-          <div className="bg-lavender-mist dark:bg-midnight-black px-4 py-5 border-b-2 border-blue-purple sm:px-6 sm:py-4">
+          <div
+            className="bg-lavender-mist dark:bg-midnight-black px-4 py-5 border-b-2
+           border-blue-purple sm:px-6 sm:py-4"
+          >
             <div className="flex justify-between items-center">
               <span
-                className="text-xl xxl:text-3xl leading-6 font-semibold
-               text-midnight-black dark:text-pale-yellow"
+                className="text-xl xxl:text-3xl leading-6 font-semibold text-midnight-black
+               dark:text-pale-yellow"
               >
                 {t("preferences")}
               </span>
               <button
                 type="button"
-                className="text-midnight-black dark:text-pale-yellow 
-                focus:outline-none focus:ring-0 focus:ring-offset-0"
+                className="text-midnight-black dark:text-pale-yellow focus:outline-none 
+                focus:ring-0 focus:ring-offset-0"
                 onClick={onClose}
               >
                 <XMarkIcon className="h-8 xxl:h-12" />
               </button>
             </div>
           </div>
-          <div className="p-4 md:p-5 space-y-4">
-            <span className="text-white">ProfileSettings</span>
+          <div className="p-4 md:p-5 space-y-5 text-midnight-black dark:text-pale-yellow font-semibold">
+            <div className="flex justify-between items-center">
+              <div>{t("loadAvatar")}</div>
+              <div>
+                <Dropzone className="h-16 rounded-full" />
+              </div>
+            </div>
+            <div className="flex justify-between items-center">
+              <div>{t("nickname")}</div>
+              <div className="flex items-center space-x-2">
+                {isEditing.nick_name ? (
+                  <input
+                    type="text"
+                    name="nick_name"
+                    value={editedUser.nick_name}
+                    onChange={handleChange}
+                    className={inputStyle}
+                  />
+                ) : (
+                  <>
+                    <PencilSquareIcon
+                      className="h-6 xxl:h-12"
+                      onClick={() => handleEdit("nick_name")}
+                    />
+                    <span>{user.nick_name}</span>
+                  </>
+                )}
+              </div>
+            </div>
+            <div className="flex justify-between items-center">
+              <div>Email</div>
+              <div className="flex items-center space-x-2">
+                {isEditing.email ? (
+                  <input
+                    type="text"
+                    name="email"
+                    value={editedUser.email}
+                    onChange={handleChange}
+                    className={inputStyle}
+                  />
+                ) : (
+                  <>
+                    <PencilSquareIcon
+                      className="h-6 xxl:h-12"
+                      onClick={() => handleEdit("email")}
+                    />
+                    <span>{user.email}</span>
+                  </>
+                )}
+              </div>
+            </div>
+            <div className="flex justify-between items-center">
+              <div>{t("birthday")}</div>
+              <div className="flex items-center space-x-2">
+                {isEditing.birthDate ? (
+                  <input
+                    type="date"
+                    name="birthDate"
+                    value={editedUser.birthDate}
+                    onChange={handleChange}
+                    className={inputStyle}
+                  />
+                ) : (
+                  <>
+                    <PencilSquareIcon
+                      className="h-6 xxl:h-12"
+                      onClick={() => handleEdit("birthDate")}
+                    />
+                    <span>{user.birthDate}</span>
+                  </>
+                )}
+              </div>
+            </div>
           </div>
-          <div className="bg-lavender-mist dark:bg-midnight-black border-t-2 border-blue-purple px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-            <button
-              type="button"
-              className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
-              onClick={onClose}
-            >
-              I accept
-            </button>
-            <button
-              type="button"
-              className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-lavender-mist dark:bg-midnight-black text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 sm:mt-0 sm:w-auto sm:text-sm"
-              onClick={onClose}
-            >
-              Decline
-            </button>
+          <div className="bg-lavender-mist dark:bg-midnight-black border-t-2 border-blue-purple
+           px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+            <div className="sm:pl-4">
+              {Object.values(isEditing).some((editing) => editing) ? (
+                <ButtonSolid type="button" onClick={handleSave}>
+                  {t("saveData")}
+                </ButtonSolid>
+              ) : (
+                <ButtonSolid type="button" onClick={onClose}>
+                  {t("saveData")}
+                </ButtonSolid>
+              )}
+            </div>
+            <div>
+              <ButtonOutline type="button" onClick={handleCancel}>
+                {t("cancel")}
+              </ButtonOutline>
+            </div>
           </div>
         </div>
       </div>
