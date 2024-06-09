@@ -5,6 +5,7 @@ import {
   ClipboardIcon,
   UserIcon,
   TrashIcon,
+  ArrowRightStartOnRectangleIcon,
 } from "@heroicons/react/24/outline";
 import ButtonOutline from "./../components/buttons/ButtonOutline";
 import { useState } from "react";
@@ -81,6 +82,21 @@ function SettingsView() {
               </ButtonOutline>
             </div>
           </div>
+          <div className="flex justify-between items-center">
+            <div className="flex items-center space-x-2">
+              <ArrowRightStartOnRectangleIcon className="h-8 xxl:h-12 text-red-500" />
+              <span className="text-red-500">{t("logoutProfile")}</span>
+            </div>
+            <div>
+              <button
+                className="p-2 xxl:p-3 w-full font-semibold text-center text-lg md:text-xl xxl:text-3xl
+                text-red-500 border-2 rounded-xl border-red-500
+                 hover:text-red-700 hover:border-red-700"
+              >
+                {t("logout")}
+              </button>
+            </div>
+          </div>
           <div className="border border-blue-purple" />
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-2 text-red-500">
@@ -106,6 +122,7 @@ function SettingsView() {
       <ProfileSettingsModal
         isOpen={isProfileSettingsOpen}
         onClose={() => setIsProfileSettingsOpen(false)}
+        userIndex={0}
       />
       <BlackListModal
         isOpen={isBlackListOpen}
