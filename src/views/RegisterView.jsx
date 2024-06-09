@@ -28,7 +28,7 @@ function RegisterView() {
       .oneOf([Yup.ref("password")], t("errorPasswordConfirm")),
   });
 
-  const RegisterForm = () => {
+  function RegisterForm() {
     const {
       register,
       handleSubmit,
@@ -37,9 +37,18 @@ function RegisterView() {
       resolver: yupResolver(RegisterSchema),
     });
 
-    const onSubmit = (data) => {
-      console.log(data);
-    };
+    function onSubmit(data) {
+      const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+      const newUser = {
+        nick_name: data.nick_name,
+        email: data.email,
+        password: data.password,
+        birthDate: null,
+        avatar: null,
+      };
+      const updatedUsers = [...existingUsers, newUser];
+      localStorage.setItem("users", JSON.stringify(updatedUsers));
+    }
 
     return (
       <FormWraper>
@@ -86,7 +95,7 @@ function RegisterView() {
         </form>
       </FormWraper>
     );
-  };
+  }
 
   return <RegisterForm />;
 }
