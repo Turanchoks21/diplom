@@ -41,5 +41,7 @@
   "logout": "Logout",
   "loadAvatar": "Load avatar",
   "save": "Save",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "noNews": "You haven't picked any games for the news",
+  "addNews": "Add games!"
 }
