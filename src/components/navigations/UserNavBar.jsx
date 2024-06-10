@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import ThemButton from "./../buttons/ThemButton";
 import NavButton from "../buttons/NavButton";
-import LanguageSwitcher from "../buttons/LanguageSwitcher";
 import Logo from "../Logo";
 import { Link } from "react-router-dom";
 import clsx from "clsx";
 import UserNick from "../wrapers/users/UserNick";
-import UserAvatar from "../wrapers/users/UserAvatar";
 
 import {
   Bars3Icon,
@@ -16,6 +14,7 @@ import {
   ChatBubbleLeftRightIcon,
   HeartIcon,
   Cog6ToothIcon,
+  UserCircleIcon,
 } from "@heroicons/react/24/outline";
 
 function NavBar() {
@@ -55,7 +54,7 @@ function NavBar() {
               <div className="hidden xl:block">
                 <ThemButton />
               </div>
-              <UserAvatar src="https://avatarfiles.alphacoders.com/374/thumb-1920-374883.png" />
+              <UserCircleIcon className="h-8 xxl:h-12 text-blue-purple dark:text-pale-yellow" />
             </div>
           </div>
         </div>
