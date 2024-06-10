@@ -3,8 +3,19 @@ import UserSideBar from "./components/navigations/UserSideBar";
 import { Outlet } from "react-router-dom";
 import ScrollToTop from "./router/ScrollToTop";
 import UserContext from "./context/UserContext";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function MainPageView() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    if (users.length <= 0) {
+      navigate("/");
+    }
+  }, [navigate]);
+
   return (
     <>
       <UserContext>
