@@ -1,5 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import FormWraper from "../components/forms/FormWraper";
 import FormInput from "../components/inputs/FormInput";
 import TitleWraper from "../components/forms/TitleWraper";
@@ -37,6 +38,8 @@ function RegisterView() {
       resolver: yupResolver(RegisterSchema),
     });
 
+    const navigate = useNavigate();
+
     function onSubmit(data) {
       const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
       const newUser = {
@@ -48,6 +51,8 @@ function RegisterView() {
       };
       const updatedUsers = [...existingUsers, newUser];
       localStorage.setItem("users", JSON.stringify(updatedUsers));
+
+      navigate("/main");
     }
 
     return (
