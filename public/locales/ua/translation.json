@@ -37,5 +37,9 @@
   "errorNick": "Нікнейм має бути 3-16 символів",
   "invalidEmail": "Неправильний email",
   "errorPassword": "Пароль має бути 8-32 символи",
-  "errorPasswordConfirm": "Паролі не збігаються"
+  "errorPasswordConfirm": "Паролі не збігаються",
+  "logout": "Вихід",
+  "loadAvatar": "Завантажити аватар",
+  "save": "Зберегти",
+  "cancel": "Скасувати"
 }
