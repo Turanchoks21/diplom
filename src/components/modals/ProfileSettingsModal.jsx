@@ -11,12 +11,10 @@ function ProfileSettingsModal({ isOpen, onClose, userIndex }) {
   const [isEditing, setIsEditing] = useState({
     nick_name: false,
     email: false,
-    birthDate: false,
   });
   const [editedUser, setEditedUser] = useState({
     nick_name: "",
     email: "",
-    birthDate: "",
   });
 
   useEffect(() => {
@@ -26,7 +24,6 @@ function ProfileSettingsModal({ isOpen, onClose, userIndex }) {
       setEditedUser({
         nick_name: users[userIndex]?.nick_name || "",
         email: users[userIndex]?.email || "",
-        birthDate: users[userIndex]?.birthDate || "",
       });
     }
   }, [isOpen, userIndex]);
@@ -41,7 +38,7 @@ function ProfileSettingsModal({ isOpen, onClose, userIndex }) {
     users[userIndex] = { ...users[userIndex], ...editedUser };
     localStorage.setItem("users", JSON.stringify(users));
     setUser(users[userIndex]);
-    setIsEditing({ nick_name: false, email: false, birthDate: false });
+    setIsEditing({ nick_name: false, email: false });
     onClose();
   }
 
@@ -53,9 +50,8 @@ function ProfileSettingsModal({ isOpen, onClose, userIndex }) {
     setEditedUser({
       nick_name: user.nick_name,
       email: user.email,
-      birthDate: user.birthDate,
     });
-    setIsEditing({ nick_name: false, email: false, birthDate: false });
+    setIsEditing({ nick_name: false, email: false });
     onClose();
   }
 
@@ -147,31 +143,11 @@ function ProfileSettingsModal({ isOpen, onClose, userIndex }) {
                 )}
               </div>
             </div>
-            <div className="flex justify-between items-center">
-              <div>{t("birthday")}</div>
-              <div className="flex items-center space-x-2">
-                {isEditing.birthDate ? (
-                  <input
-                    type="date"
-                    name="birthDate"
-                    value={editedUser.birthDate}
-                    onChange={handleChange}
-                    className={inputStyle}
-                  />
-                ) : (
-                  <>
-                    <PencilSquareIcon
-                      className="h-6 xxl:h-12"
-                      onClick={() => handleEdit("birthDate")}
-                    />
-                    <span>{user.birthDate}</span>
-                  </>
-                )}
-              </div>
-            </div>
           </div>
-          <div className="bg-lavender-mist dark:bg-midnight-black border-t-2 border-blue-purple
-           px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+          <div
+            className="bg-lavender-mist dark:bg-midnight-black border-t-2 border-blue-purple
+           px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse"
+          >
             <div className="sm:pl-4">
               {Object.values(isEditing).some((editing) => editing) ? (
                 <ButtonSolid type="button" onClick={handleSave}>
