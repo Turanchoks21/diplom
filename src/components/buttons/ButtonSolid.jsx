@@ -5,7 +5,7 @@ function ButtonSolid({ to, children, type, onClick }) {
     return (
       <Link
         to={to}
-        className="py-2 xxl:py-3 w-full text-center text-lg md:text-xl xxl:text-3xl 
+        className="p-2 xxl:p-3 w-full text-center text-lg md:text-xl xxl:text-3xl 
         text-lavender-mist dark:text-midnight-black
           font-semibold bg-midnight-black dark:bg-pale-yellow border-2 border-midnight-black 
           dark:border-pale-yellow hover:bg-blue-purple dark:hover:bg-blue-purple
@@ -22,7 +22,7 @@ function ButtonSolid({ to, children, type, onClick }) {
     <button
       onClick={onClick}
       type={type}
-      className="py-2 xxl:py-3 w-full text-center text-lg md:text-xl xxl:text-3xl 
+      className="p-2 xxl:p-3 w-full text-center text-lg md:text-xl xxl:text-3xl 
       text-lavender-mist dark:text-midnight-black
         font-semibold bg-midnight-black dark:bg-pale-yellow border-2 border-midnight-black 
       dark:border-pale-yellow hover:bg-blue-purple dark:hover:bg-blue-purple
