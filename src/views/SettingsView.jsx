@@ -5,31 +5,45 @@ import {
   ClipboardIcon,
   UserIcon,
   TrashIcon,
-  ArrowRightStartOnRectangleIcon,
+  ArrowRightOnRectangleIcon,
 } from "@heroicons/react/24/outline";
 import ButtonOutline from "./../components/buttons/ButtonOutline";
 import { useState } from "react";
 import PreferencesModal from "../components/modals/PreferencesModal";
 import ProfileSettingsModal from "../components/modals/ProfileSettingsModal";
 import BlackListModal from "../components/modals/BlackListModal";
+import { useNavigate } from "react-router-dom";
+import { useUsers } from "../context/UserContext";
 
 function SettingsView() {
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
+  const { clearUsers } = useUsers();
+
+  const [isPreferencesOpen, setIsPreferencesOpen] = useState(false);
+  const [isProfileSettingsOpen, setIsProfileSettingsOpen] = useState(false);
+  const [isBlackListOpen, setIsBlackListOpen] = useState(false);
 
   const languages = ["ua", "ru", "en"];
   const [currentLangIndex, setCurrentLangIndex] = useState(
     languages.indexOf(i18n.language)
   );
 
-  const changeLanguage = () => {
+  function changeLanguage() {
     const nextLangIndex = (currentLangIndex + 1) % languages.length;
     i18n.changeLanguage(languages[nextLangIndex]);
     setCurrentLangIndex(nextLangIndex);
-  };
+  }
 
-  const [isPreferencesOpen, setIsPreferencesOpen] = useState(false);
-  const [isProfileSettingsOpen, setIsProfileSettingsOpen] = useState(false);
-  const [isBlackListOpen, setIsBlackListOpen] = useState(false);
+  function handleLogout() {
+    clearUsers();
+    navigate("/login");
+  }
+
+  function handleDeleteProfile() {
+    clearUsers();
+    navigate("/register");
+  }
 
   return (
     <>
@@ -84,14 +98,15 @@ function SettingsView() {
           </div>
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-2">
-              <ArrowRightStartOnRectangleIcon className="h-8 xxl:h-12 text-red-500" />
+              <ArrowRightOnRectangleIcon className="h-8 xxl:h-12 text-red-500" />
               <span className="text-red-500">{t("logoutProfile")}</span>
             </div>
             <div>
               <button
+                onClick={handleLogout}
                 className="p-2 xxl:p-3 w-full font-semibold text-center text-lg md:text-xl xxl:text-3xl
                 text-red-500 border-2 rounded-xl border-red-500
-                 hover:text-red-700 hover:border-red-700"
+                hover:text-red-700 hover:border-red-700"
               >
                 {t("logout")}
               </button>
@@ -105,9 +120,10 @@ function SettingsView() {
             </div>
             <div>
               <button
+                onClick={handleDeleteProfile}
                 className="p-2 xxl:p-3 w-full font-semibold text-center text-lg md:text-xl xxl:text-3xl
                 text-red-500 border-2 rounded-xl border-red-500
-                 hover:text-red-700 hover:border-red-700"
+                hover:text-red-700 hover:border-red-700"
               >
                 {t("delete")}
               </button>
