@@ -99,7 +99,7 @@ function SettingsView() {
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-2">
               <ArrowRightOnRectangleIcon className="h-8 xxl:h-12 text-red-500" />
-              <span className="text-red-500">{t("logoutProfile")}</span>
+              <span className="text-red-500">{t("logout")}</span>
             </div>
             <div>
               <button

@@ -151,11 +151,11 @@ function ProfileSettingsModal({ isOpen, onClose, userIndex }) {
             <div className="sm:pl-4">
               {Object.values(isEditing).some((editing) => editing) ? (
                 <ButtonSolid type="button" onClick={handleSave}>
-                  {t("saveData")}
+                  {t("save")}
                 </ButtonSolid>
               ) : (
                 <ButtonSolid type="button" onClick={onClose}>
-                  {t("saveData")}
+                  {t("save")}
                 </ButtonSolid>
               )}
             </div>
