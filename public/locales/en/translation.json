@@ -43,5 +43,6 @@
   "save": "Save",
   "cancel": "Cancel",
   "noNews": "You haven't picked any games for the news",
-  "addNews": "Add games!"
+  "addNews": "Add games!",
+  "message": "Message"
 }
