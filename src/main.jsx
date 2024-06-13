@@ -1,9 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import "./i18n";
 import App from "./App.jsx";
@@ -16,6 +13,7 @@ import FriendsView from "./views/FriendsView.jsx";
 import ChatsView from "./views/ChatsView.jsx";
 import LikedView from "./views/LikedView.jsx";
 import SettingsView from "./views/SettingsView.jsx";
+import PersonChatView from "./views/PersonChatView.jsx";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +59,10 @@ const router = createBrowserRouter([
         element: <SettingsView />,
       },
     ],
+  },
+  {
+    path: "main/chats/:userNickname",
+    element: <PersonChatView />,
   },
 ]);
 
