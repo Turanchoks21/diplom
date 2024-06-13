@@ -18,8 +18,9 @@ import ButtonSolid from "./../components/buttons/ButtonSolid";
 function NewsView() {
   const [likes, setLikes] = useState({});
   const { t } = useTranslation();
-  // const posts = NewsData();
-  const posts = [];
+  const posts = NewsData();
+  const sortPosts = posts.sort((a, b) => b.id - a.id);
+  // const posts = [];
 
   function handleLikeClick(postId) {
     setLikes((prevLikes) => ({
@@ -30,10 +31,10 @@ function NewsView() {
 
   return (
     <>
-      <div className=" w-full lg:max-w-5xl xxl:max-w-7xl mx-auto ">
-        {posts.length !== 0 ? (
+      <div className="w-full lg:max-w-5xl xxl:max-w-7xl mx-auto">
+        {sortPosts.length !== 0 ? (
           <div className="flex flex-col space-y-4">
-            {posts.map((post) => (
+            {sortPosts.map((post) => (
               <NewsPost key={post.id}>
                 <div className="flex justify-between">
                   <div className="flex justify-between space-x-3">
