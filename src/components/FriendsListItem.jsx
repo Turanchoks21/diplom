@@ -1,6 +1,7 @@
 import GameLogo from "./wrapers/news/GameLogo";
 import GameName from "./wrapers/news/GameName";
 import { UserMinusIcon, ChatBubbleLeftIcon } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
 
 const FriendListItem = ({ friend }) => {
   return (
@@ -21,7 +22,9 @@ const FriendListItem = ({ friend }) => {
             </div>
             <div className="flex space-x-4">
               <UserMinusIcon className="h-8 xxl:h-12 text-red-500" />
-              <ChatBubbleLeftIcon className="h-8 xxl:h-12 text-midnight-black dark:text-pale-yellow" />
+              <Link to={`/main/chats/${friend.nickName}`}>
+                <ChatBubbleLeftIcon className="h-8 xxl:h-12 text-midnight-black dark:text-pale-yellow" />
+              </Link>
             </div>
           </div>
         </div>
