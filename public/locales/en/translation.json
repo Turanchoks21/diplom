@@ -44,5 +44,8 @@
   "cancel": "Cancel",
   "noNews": "You haven't picked any games for the news",
   "addNews": "Add games!",
-  "message": "Message"
+  "message": "Message",
+  "noMessage": "No message",
+  "noMassageInChat": "Your chat's empty, start chatting!",
+  "searchChat": "Search chat"
 }
