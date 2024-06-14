@@ -2,7 +2,6 @@ import { useTranslation } from "react-i18next";
 import {
   GlobeAltIcon,
   NewspaperIcon,
-  ClipboardIcon,
   UserIcon,
   TrashIcon,
   ArrowRightOnRectangleIcon,
@@ -11,7 +10,6 @@ import ButtonOutline from "./../components/buttons/ButtonOutline";
 import { useState } from "react";
 import PreferencesModal from "../components/modals/PreferencesModal";
 import ProfileSettingsModal from "../components/modals/ProfileSettingsModal";
-import BlackListModal from "../components/modals/BlackListModal";
 import { useNavigate } from "react-router-dom";
 import { useUsers } from "../context/UserContext";
 
@@ -22,7 +20,6 @@ function SettingsView() {
 
   const [isPreferencesOpen, setIsPreferencesOpen] = useState(false);
   const [isProfileSettingsOpen, setIsProfileSettingsOpen] = useState(false);
-  const [isBlackListOpen, setIsBlackListOpen] = useState(false);
 
   const languages = ["ua", "ru", "en"];
   const [currentLangIndex, setCurrentLangIndex] = useState(
@@ -87,17 +84,6 @@ function SettingsView() {
           </div>
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-2">
-              <ClipboardIcon className="h-8 xxl:h-12" />
-              <span>{t("blackList")}</span>
-            </div>
-            <div>
-              <ButtonOutline onClick={() => setIsBlackListOpen(true)}>
-                {t("open")}
-              </ButtonOutline>
-            </div>
-          </div>
-          <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-2">
               <ArrowRightOnRectangleIcon className="h-8 xxl:h-12 text-red-500" />
               <span className="text-red-500">{t("logout")}</span>
             </div>
@@ -139,10 +125,6 @@ function SettingsView() {
         isOpen={isProfileSettingsOpen}
         onClose={() => setIsProfileSettingsOpen(false)}
         userIndex={0}
-      />
-      <BlackListModal
-        isOpen={isBlackListOpen}
-        onClose={() => setIsBlackListOpen(false)}
       />
     </>
   );
