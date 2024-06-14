@@ -8,6 +8,7 @@ import {
   ArrowLeftIcon,
 } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
+import ThemButton from "../components/buttons/ThemButton";
 
 function PersonChatView() {
   const { t } = useTranslation();
@@ -19,6 +20,9 @@ function PersonChatView() {
 
   return (
     <>
+      <div className="hidden">
+        <ThemButton />
+      </div>
       <div className="flex justify-center pt-2 md:pt-3">
         <div
           className="w-full max-w-2xl border-2 rounded-xl 
@@ -47,8 +51,8 @@ function PersonChatView() {
               <EllipsisVerticalIcon className="h-8 xxl:h-12" />
             </div>
           </div>
-          <div className="flex h-screen my-[-7rem] justify-center items-center text-white">
-            chat
+          <div className="flex h-screen my-[-7rem] justify-center items-center text-midnight-black dark:text-white">
+            {t("noMassageInChat")}
           </div>
           <div className="flex justify-between space-x-4 items-center p-2  border-t-2 border-blue-purple">
             <textarea
