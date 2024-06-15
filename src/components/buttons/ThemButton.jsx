@@ -12,6 +12,7 @@ function ThemButton({ className }) {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isSolid, setIsSolid] = useState(false);
   const [isIcons, setIsIcons] = useState(false);
+  const styles = "h-8 xxl:h-12 3xl:h-20"
 
   const toggleDarkMode = () => {
     const newDarkMode = !isDarkMode;
@@ -55,14 +56,14 @@ function ThemButton({ className }) {
         >
           {isIcons ? (
             isSolid ? (
-              <SolidMoon className="h-8 xxl:h-12" />
+              <SolidMoon className={styles} />
             ) : (
-              <OutlineMoon className="h-8 xxl:h-12" />
+              <OutlineMoon className={styles} />
             )
           ) : isSolid ? (
-            <SolidSun className="h-8 xxl:h-12" />
+            <SolidSun className={styles} />
           ) : (
-            <OutlineSun className="h-8 xxl:h-12" />
+            <OutlineSun className={styles} />
           )}
         </button>
       </div>

@@ -13,7 +13,7 @@ function UserSideBar() {
 
   return (
     <>
-      <div className="w-full fixed max-w-[18rem] z-10 hidden xl:block">
+      <div className="w-full fixed max-w-[18rem] xxl:max-w-[24rem] 4xl:max-w-[26rem] z-10 hidden xl:block">
         <div
           className="flex-col col-span-1 space-y-4 p-5 pl-8 border-2 rounded-xl bg-lavender-mist
          dark:bg-midnight-black border-blue-purple transition-colors ease-in-out duration-500
