@@ -20,7 +20,10 @@ function MainPageView() {
     <>
       <UserContext>
         <UserNavBar />
-        <div className="m-0 py-20 px-2 lg:px-48 items-center">
+        <div
+          className="m-0 pt-20 pb-5 3xl:pt-32 px-2 lg:px-48 4xl:px-96 5xl:px-[32rem] 
+          6xl:px-[44rem] 7xl:px-[56rem] 8xl:px-[66rem] items-center"
+        >
           <div className="flex xl:space-x-4">
             <div className="w-full max-w-[18rem] hidden xl:block">
               <UserSideBar />
