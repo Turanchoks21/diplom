@@ -31,7 +31,7 @@ function NewsView() {
 
   return (
     <>
-      <div className="w-full lg:max-w-5xl xxl:max-w-7xl mx-auto">
+      <div className="w-full lg:max-w-5xl 3xl:max-w-[70rem] mx-auto">
         {sortPosts.length !== 0 ? (
           <div className="flex flex-col space-y-4">
             {sortPosts.map((post) => (

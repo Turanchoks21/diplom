@@ -21,7 +21,7 @@ function LikedView() {
 
   return (
     <>
-      <div className="flex flex-col w-full lg:max-w-5xl xxl:max-w-7xl mx-auto space-y-4">
+      <div className="flex flex-col w-full max-w-5xl 3xl:max-w-[70rem] mx-auto space-y-4">
         <NewsPost>
           <div className="flex justify-between">
             <div className="flex justify-between space-x-3">

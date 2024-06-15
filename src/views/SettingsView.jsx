@@ -45,7 +45,8 @@ function SettingsView() {
   return (
     <>
       <div
-        className="flex justify-center w-full font-semibold rounded-xl p-4 border-2 border-blue-purple 
+        className="flex justify-center w-full lg:max-w-5xl 3xl:max-w-[70rem] mx-auto font-semibold 
+        rounded-xl p-4 border-2 border-blue-purple 
         text-xl xxl:text-3xl text-midnight-black dark:text-pale-yellow"
       >
         <div className="flex flex-col w-full space-y-4">

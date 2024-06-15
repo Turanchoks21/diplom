@@ -30,7 +30,7 @@ function ChatsView() {
 
   return (
     <>
-      <div className="space-y-4">
+      <div className="w-full lg:max-w-5xl 3xl:max-w-[70rem] mx-auto space-y-4">
         <SearchBar
           isSearch={isSearchChat}
           searchValue={searchValue}
