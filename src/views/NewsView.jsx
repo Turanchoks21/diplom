@@ -5,7 +5,6 @@ import NewsTime from "../components/wrapers/news/NewsTime";
 import NewsPhoto from "../components/wrapers/news/NewsPhoto";
 import NewsButton from "../components/buttons/NewsButton";
 import {
-  ArrowsUpDownIcon,
   HeartIcon,
   ChatBubbleLeftEllipsisIcon,
 } from "@heroicons/react/24/outline";
@@ -14,6 +13,7 @@ import { useState } from "react";
 import NewsData from "./../data/NewsData";
 import { useTranslation } from "react-i18next";
 import ButtonSolid from "./../components/buttons/ButtonSolid";
+import { Link } from "react-router-dom";
 
 function NewsView() {
   const [likes, setLikes] = useState({});
@@ -37,10 +37,13 @@ function NewsView() {
             {sortPosts.map((post) => (
               <NewsPost key={post.id}>
                 <div className="flex justify-between">
-                  <div className="flex justify-between space-x-3">
+                  <Link
+                    to={`/main/${post.gameName}`}
+                    className="flex justify-between space-x-3"
+                  >
                     <GameLogo src={post.gameLogo} />
                     <GameName text={post.gameName} />
-                  </div>
+                  </Link>
                   <div className="flex flex-col items-end">
                     {post.times.map((time, index) => (
                       <NewsTime key={index} time={time} />
@@ -53,18 +56,15 @@ function NewsView() {
                 <div className="flex justify-center">
                   <NewsPhoto src={post.photo} />
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-end space-x-3">
                   <NewsButton>
-                    <ChatBubbleLeftEllipsisIcon className="h-8 xxl:h-12" />
-                  </NewsButton>
-                  <NewsButton>
-                    <ArrowsUpDownIcon className="h-8 xxl:h-12" />
+                    <ChatBubbleLeftEllipsisIcon className="h-7 lg:h-8 xxl:h-12" />
                   </NewsButton>
                   <NewsButton onClick={() => handleLikeClick(post.id)}>
                     {likes[post.id] ? (
-                      <HeartIconSolid className="h-8 xxl:h-12 text-red-500" />
+                      <HeartIconSolid className="h-7 lg:h-8 xxl:h-12 text-red-500" />
                     ) : (
-                      <HeartIcon className="h-8 xxl:h-12" />
+                      <HeartIcon className="h-7 lg:h-8 xxl:h-12" />
                     )}
                   </NewsButton>
                 </div>
