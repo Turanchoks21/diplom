@@ -50,7 +50,7 @@ function ChatsView() {
               <div className="flex justify-between items-center">
                 <div className="flex justify-between space-x-3">
                   <img
-                    className={`h-14 rounded-full border-[3px] ${
+                    className={`h-14 xxl:h-20 rounded-full border-[3px] xxl:border-[5px] ${
                       friendChat.status === "online"
                         ? "border-green-500"
                         : "border-red-500"
@@ -59,7 +59,7 @@ function ChatsView() {
                   />
                   <div>
                     <GameName text={friendChat.nickName} />
-                    <span className="text-black dark:text-white text-sm">
+                    <span className="text-black dark:text-white text-sm xxl:text-xl">
                       {t("noMessage")}
                     </span>
                   </div>

@@ -7,7 +7,10 @@ const FriendListItem = ({ friend }) => {
   return (
     <>
       <div key={friend.id}>
-        <div className="w-full">
+        <div
+          className="w-full text-lg md:text-xl xxl:text-3xl
+                4xl:text-4xl"
+        >
           <div className="flex justify-between items-center">
             <div className="flex justify-between space-x-3">
               <GameLogo src={friend.userAvatar} />
