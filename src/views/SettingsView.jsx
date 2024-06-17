@@ -5,11 +5,13 @@ import {
   UserIcon,
   TrashIcon,
   ArrowRightOnRectangleIcon,
+  HandRaisedIcon,
 } from "@heroicons/react/24/outline";
 import ButtonOutline from "./../components/buttons/ButtonOutline";
 import { useState } from "react";
 import PreferencesModal from "../components/modals/PreferencesModal";
 import ProfileSettingsModal from "../components/modals/ProfileSettingsModal";
+import DeleteProfileModal from "../components/modals/DeleteProfileModal";
 import { useNavigate } from "react-router-dom";
 import { useUsers } from "../context/UserContext";
 
@@ -20,6 +22,8 @@ function SettingsView() {
 
   const [isPreferencesOpen, setIsPreferencesOpen] = useState(false);
   const [isProfileSettingsOpen, setIsProfileSettingsOpen] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+  const [isUserLefty, setIsUserLefty] = useState(false);
 
   const languages = ["ua", "ru", "en"];
   const [currentLangIndex, setCurrentLangIndex] = useState(
@@ -37,9 +41,8 @@ function SettingsView() {
     navigate("/login");
   }
 
-  function handleDeleteProfile() {
-    clearUsers();
-    navigate("/register");
+  function toggleUserLefty() {
+    setIsUserLefty(!isUserLefty);
   }
 
   return (
@@ -47,7 +50,7 @@ function SettingsView() {
       <div
         className="flex justify-center w-full lg:max-w-5xl 3xl:max-w-[70rem] mx-auto font-semibold 
         rounded-xl p-4 border-2 border-blue-purple 
-        text-xl xxl:text-3xl text-midnight-black dark:text-pale-yellow"
+        text-xl xxl:text-3xl 4xl:text-4xl text-midnight-black dark:text-pale-yellow"
       >
         <div className="flex flex-col w-full space-y-4">
           <div className="flex justify-between items-center">
@@ -85,13 +88,24 @@ function SettingsView() {
           </div>
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-2">
+              <HandRaisedIcon className="h-8 xxl:h-12" />
+              <span>{t("lefty")}</span>
+            </div>
+            <div>
+              <ButtonOutline onClick={toggleUserLefty}>
+                {isUserLefty ? <span>{t("yes")}</span> : <span>{t("no")}</span>}
+              </ButtonOutline>
+            </div>
+          </div>
+          <div className="flex justify-between items-center">
+            <div className="flex items-center space-x-2">
               <ArrowRightOnRectangleIcon className="h-8 xxl:h-12 text-red-500" />
               <span className="text-red-500">{t("logout")}</span>
             </div>
             <div>
               <button
                 onClick={handleLogout}
-                className="p-2 xxl:p-3 w-full font-semibold text-center text-lg md:text-xl xxl:text-3xl
+                className="p-2 xxl:p-3 w-full font-semibold text-center 
                 text-red-500 border-2 rounded-xl border-red-500
                 hover:text-red-700 hover:border-red-700"
               >
@@ -107,7 +121,7 @@ function SettingsView() {
             </div>
             <div>
               <button
-                onClick={handleDeleteProfile}
+                onClick={() => setIsDeleteOpen(true)}
                 className="p-2 xxl:p-3 w-full font-semibold text-center text-lg md:text-xl xxl:text-3xl
                 text-red-500 border-2 rounded-xl border-red-500
                 hover:text-red-700 hover:border-red-700"
@@ -126,6 +140,10 @@ function SettingsView() {
         isOpen={isProfileSettingsOpen}
         onClose={() => setIsProfileSettingsOpen(false)}
         userIndex={0}
+      />
+      <DeleteProfileModal
+        isOpen={isDeleteOpen}
+        onClose={() => setIsDeleteOpen(false)}
       />
     </>
   );
