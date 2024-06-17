@@ -47,5 +47,15 @@
   "message": "Сообщение",
   "noMessage": "Нет сообщений",
   "noMassageInChat": "Ваш чат пустой, начните общение!",
-  "searchChat": "Найти чат"
+  "searchChat": "Найти чат",
+  "wantToDelete": "Ты правда хочешь удалить профиль?",
+  "noNewsForGame": "Пока нет никаких новостей об этой игре",
+  "platforms": "Платформы",
+  "friendRequest": "Заявка в друзья",
+  "noFriendRequest": "Заявок в друзья нет",
+  "subscribe": "Подписаться",
+  "unsubscribe": "Отписаться",
+  "yes": "Да",
+  "no": "Нет",
+  "lefty": "Левша"
 }

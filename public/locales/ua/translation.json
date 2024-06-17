@@ -47,5 +47,15 @@
   "message": "Повідомлення",
   "noMessage": "Немає повідомлень",
   "noMassageInChat": "Ваш чат порожній, почніть спілкування!",
-  "searchChat": "Знайти чат"
+  "searchChat": "Знайти чат",
+  "wantToDelete": "Ти справді хочеш видалити профіль?",
+  "noNewsForGame": "Поки що немає жодних новин про цю гру",
+  "platforms": "Платформи",
+  "friendRequest": "Заявка в друзі",
+  "noFriendRequest": "Заявок в друзі немає",
+  "subscribe": "Підписатися",
+  "unsubscribe": "Відписатися",
+  "yes": "Так",
+  "no": "Ні",
+  "lefty": "Лівша"
 }

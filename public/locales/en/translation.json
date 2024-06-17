@@ -47,5 +47,15 @@
   "message": "Message",
   "noMessage": "No message",
   "noMassageInChat": "Your chat's empty, start chatting!",
-  "searchChat": "Search chat"
+  "searchChat": "Search chat",
+  "wantToDelete": "Do you really want to delete the profile?",
+  "noNewsForGame": "There's no news for this game yet",
+  "platforms": "Platforms",
+  "friendRequest": "Friend request",
+  "noFriendRequest": "No friend request",
+  "subscribe": "Subscribe",
+  "unsubscribe": "Unsubscribe",
+  "yes": "Yes",
+  "no": "No",
+  "lefty": "Lefty"
 }
