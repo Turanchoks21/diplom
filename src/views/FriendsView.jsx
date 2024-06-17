@@ -14,6 +14,8 @@ function FriendsView() {
   const friends = FriendsData();
   // const friends = [];
 
+  const [isFrindRequest, setIsFrindRequest] = useState(false);
+
   const [isSearchUser, setIsSearchUser] = useState(false);
   const [searchUserValue, setSearchUserValue] = useState("");
 
@@ -43,6 +45,10 @@ function FriendsView() {
     setSearchUserValue("");
   }
 
+  function toggleFriendsRequest() {
+    setIsFrindRequest(!isFrindRequest);
+  }
+
   return (
     <div className="space-y-4 max-w-5xl 3xl:max-w-[70rem] mx-auto">
       <SearchBar
@@ -58,59 +64,85 @@ function FriendsView() {
         className="flex flex-col w-full mx-auto border-2 border-blue-purple rounded-xl p-5 space-y-4
         text-midnight-black dark:text-pale-yellow font-semibold"
       >
-        {isSearchUser ? (
+        <div className="flex justify-between -mx-5 -mt-5">
+          <div
+            onClick={toggleFriendsRequest}
+            className={`border-r p-2 w-full flex justify-center border-blue-purple ${
+              isFrindRequest ? "border-b-2" : "border-b-0"
+            }`}
+          >
+            <span className="font-semibold text-lg xxl:text-2xl">{t("friends")}</span>
+          </div>
+          <div
+            onClick={toggleFriendsRequest}
+            className={`border-l p-2 w-full flex justify-center border-blue-purple ${
+              isFrindRequest ? "border-b-0" : "border-b-2"
+            }`}
+          >
+            <span className="font-semibold text-lg xxl:text-2xl">{t("friendRequest")}</span>
+          </div>
+        </div>
+        {!isFrindRequest ? (
           <div>
-            {searchUserValue === "" ? (
-              <div className="flex justify-center items-center text-xl xxl:text-3xl">
-                {t("startSearch")}
+            {isSearchUser ? (
+              <div>
+                {searchUserValue === "" ? (
+                  <div className="flex justify-center p-12 items-center text-xl xxl:text-3xl">
+                    {t("startSearch")}
+                  </div>
+                ) : (
+                  <div>
+                    <div className="space-y-5">
+                      <span
+                        className="text-xl xxl:text-3xl pb-1 border-b-2 
+                      border-midnight-black dark:border-pale-yellow"
+                      >
+                        {t("inFriends")}
+                      </span>
+                      {filteredFriends.map((friend) => (
+                        <FriendListItem key={friend.id} friend={friend} />
+                      ))}
+                    </div>
+                    <div className="my-10" />
+                    <div className="space-y-5">
+                      <span
+                        className="text-xl xxl:text-3xl pb-1 border-b-2 
+                     border-midnight-black dark:border-pale-yellow"
+                      >
+                        {t("globalUsers")}
+                      </span>
+                      {filteredUsers.map((user) => (
+                        <SearchUserItem key={user.id} user={user} />
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             ) : (
               <div>
-                <div className="space-y-5">
-                  <span
-                    className="text-xl xxl:text-3xl pb-1 border-b-2 
-                     border-midnight-black dark:border-pale-yellow"
+                {friends.length !== 0 ? (
+                  <div>
+                    {friends.map((friend) => (
+                      <FriendListItem key={friend.id} friend={friend} />
+                    ))}
+                  </div>
+                ) : (
+                  <div
+                    className="flex justify-center items-center text-blue-purple font-semibold 
+                text-xl xxl:text-3xl"
                   >
-                    {t("inFriends")}
-                  </span>
-                  {filteredFriends.map((friend) => (
-                    <FriendListItem key={friend.id} friend={friend} />
-                  ))}
-                </div>
-                <div className="my-10" />
-                <div className="space-y-5">
-                  <span
-                    className="text-xl xxl:text-3xl pb-1 border-b-2 
-                     border-midnight-black dark:border-pale-yellow"
-                  >
-                    {t("globalUsers")}
-                  </span>
-                  {filteredUsers.map((user) => (
-                    <SearchUserItem key={user.id} user={user} />
-                  ))}
-                </div>
+                    <span className="flex flex-col text-xl xxl:text-3xl">
+                      {t("nobodyHere")}
+                      <FaceFrownIcon className="h-10 xxl:h-14" />
+                    </span>
+                  </div>
+                )}
               </div>
             )}
           </div>
         ) : (
-          <div>
-            {friends.length !== 0 ? (
-              <div>
-                {friends.map((friend) => (
-                  <FriendListItem key={friend.id} friend={friend} />
-                ))}
-              </div>
-            ) : (
-              <div
-                className="flex justify-center items-center text-blue-purple font-semibold 
-                text-xl xxl:text-3xl"
-              >
-                <span className="flex flex-col text-xl xxl:text-3xl">
-                  {t("nobodyHere")}
-                  <FaceFrownIcon className="h-10 xxl:h-14" />
-                </span>
-              </div>
-            )}
+          <div className="flex justify-center p-12">
+            <span className="text-xl xxl:text-3xl">{t("noFriendRequest")}</span>
           </div>
         )}
       </div>
