@@ -44,12 +44,9 @@ function LikedView() {
           <div className="flex justify-center">
             <NewsPhoto src="https://pbs.twimg.com/media/GOIeyQ4WgAAePNr?format=jpg&name=large" />
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-end space-x-3">
             <NewsButton>
               <ChatBubbleLeftEllipsisIcon className="h-8 xxl:h-12" />
-            </NewsButton>
-            <NewsButton>
-              <ArrowsUpDownIcon className="h-8 xxl:h-12" />
             </NewsButton>
             <NewsButton onClick={handleLikeClick}>
               {isLiked ? (
