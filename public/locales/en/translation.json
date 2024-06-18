@@ -57,5 +57,8 @@
   "unsubscribe": "Unsubscribe",
   "yes": "Yes",
   "no": "No",
-  "lefty": "Lefty"
+  "lefty": "Lefty",
+  "resetPassword": "Reset password",
+  "enterYourMail": "Enter your mail",
+  "sendAnEmail": "Send an email"
 }

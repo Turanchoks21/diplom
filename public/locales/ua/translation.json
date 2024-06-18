@@ -57,5 +57,8 @@
   "unsubscribe": "Відписатися",
   "yes": "Так",
   "no": "Ні",
-  "lefty": "Лівша"
+  "lefty": "Лівша",
+  "resetPassword": "Відновлення паролю",
+  "enterYourMail": "Введіть ваш email",
+  "sendAnEmail": "Надіслати лист"
 }

@@ -57,5 +57,8 @@
   "unsubscribe": "Отписаться",
   "yes": "Да",
   "no": "Нет",
-  "lefty": "Левша"
+  "lefty": "Левша",
+  "resetPassword": "Восстановление пароля",
+  "enterYourMail": "Введите ваш email",
+  "sendAnEmail": "Отправить письмо"
 }
