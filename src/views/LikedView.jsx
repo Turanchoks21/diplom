@@ -5,15 +5,16 @@ import NewsTime from "../components/wrapers/news/NewsTime";
 import NewsPhoto from "../components/wrapers/news/NewsPhoto";
 import NewsButton from "../components/buttons/NewsButton";
 import {
-  ArrowsUpDownIcon,
   HeartIcon,
   ChatBubbleLeftEllipsisIcon,
 } from "@heroicons/react/24/outline";
 import { HeartIcon as HeartIconSolid } from "@heroicons/react/20/solid";
 import { useState } from "react";
+import { useUserParams } from "../context/UserParamsContext";
 
 function LikedView() {
   const [isLiked, setIsLiked] = useState(true);
+  const { userParams } = useUserParams();
 
   function handleLikeClick() {
     setIsLiked(!isLiked);
@@ -44,7 +45,11 @@ function LikedView() {
           <div className="flex justify-center">
             <NewsPhoto src="https://pbs.twimg.com/media/GOIeyQ4WgAAePNr?format=jpg&name=large" />
           </div>
-          <div className="flex justify-end space-x-3">
+          <div
+            className={`flex ${
+              userParams.lefty ? "justify-start" : "justify-end"
+            } space-x-3 my-2`}
+          >
             <NewsButton>
               <ChatBubbleLeftEllipsisIcon className="h-8 xxl:h-12" />
             </NewsButton>

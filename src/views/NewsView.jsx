@@ -14,11 +14,13 @@ import NewsData from "./../data/NewsData";
 import { useTranslation } from "react-i18next";
 import ButtonSolid from "./../components/buttons/ButtonSolid";
 import { Link } from "react-router-dom";
+import { useUserParams } from "../context/UserParamsContext";
 
 function NewsView() {
   const [likes, setLikes] = useState({});
   const { t } = useTranslation();
   const posts = NewsData();
+  const { userParams } = useUserParams();
   const sortPosts = posts.sort((a, b) => b.id - a.id);
   // const posts = [];
 
@@ -53,10 +55,14 @@ function NewsView() {
                 <div className="text-midnight-black dark:text-white xxl:text-2xl">
                   {post.content}
                 </div>
-                <div className="flex justify-center">
+                <div className="flex justify-center my-2">
                   <NewsPhoto src={post.photo} />
                 </div>
-                <div className="flex justify-end space-x-3">
+                <div
+                  className={`flex ${
+                    userParams.lefty ? "justify-start" : "justify-end"
+                  } space-x-3 my-2`}
+                >
                   <NewsButton>
                     <ChatBubbleLeftEllipsisIcon className="h-7 lg:h-8 xxl:h-12" />
                   </NewsButton>
