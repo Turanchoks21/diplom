@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import FormWraper from "../components/forms/FormWraper";
 import FormInput from "../components/inputs/FormInput";
@@ -9,9 +9,11 @@ import ButtonWraper from "../components/forms/ButtonWraper";
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import ForgotPasswordModal from "../components/modals/ForgotPasswordModal";
 
 function LoginView() {
   const { t } = useTranslation();
+  const [isForgotPassOpen, setIsForgotPassOpen] = useState(false);
 
   const LoginSchema = Yup.object().shape({
     nick_name: Yup.string()
@@ -38,33 +40,44 @@ function LoginView() {
     };
 
     return (
-      <FormWraper>
-        <TitleWraper>{t("loginTitle")}</TitleWraper>
-        <form onSubmit={handleSubmit(onSubmit)} className="w-full">
-          <FormInput
-            name="nick_name"
-            id="nick_name"
-            register={register}
-            error={errors.nick_name}
-          >
-            {t("nickname")}
-          </FormInput>
-          <FormInput
-            type="password"
-            name="password"
-            id="password"
-            register={register}
-            error={errors.password}
-          >
-            {t("password")}
-          </FormInput>
-          <ButtonWraper>
-            <ButtonSolid type="submit">{t("loginUser")}</ButtonSolid>
-            <ButtonOutline>{t("forgotPassword")}</ButtonOutline>
-            <ButtonOutline to="/register">{t("createUser")}</ButtonOutline>
-          </ButtonWraper>
-        </form>
-      </FormWraper>
+      <>
+        <FormWraper>
+          <TitleWraper>{t("loginTitle")}</TitleWraper>
+          <form onSubmit={handleSubmit(onSubmit)} className="w-full">
+            <FormInput
+              name="nick_name"
+              id="nick_name"
+              register={register}
+              error={errors.nick_name}
+            >
+              {t("nickname")}
+            </FormInput>
+            <FormInput
+              type="password"
+              name="password"
+              id="password"
+              register={register}
+              error={errors.password}
+            >
+              {t("password")}
+            </FormInput>
+            <ButtonWraper>
+              <ButtonSolid type="submit">{t("loginUser")}</ButtonSolid>
+              <ButtonOutline
+                type="button"
+                onClick={() => setIsForgotPassOpen(true)}
+              >
+                {t("forgotPassword")}
+              </ButtonOutline>
+              <ButtonOutline to="/register">{t("createUser")}</ButtonOutline>
+            </ButtonWraper>
+          </form>
+        </FormWraper>
+        <ForgotPasswordModal
+          isOpen={isForgotPassOpen}
+          onClose={() => setIsForgotPassOpen(false)}
+        />
+      </>
     );
   };
 
