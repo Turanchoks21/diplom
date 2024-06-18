@@ -14,16 +14,17 @@ import ProfileSettingsModal from "../components/modals/ProfileSettingsModal";
 import DeleteProfileModal from "../components/modals/DeleteProfileModal";
 import { useNavigate } from "react-router-dom";
 import { useUsers } from "../context/UserContext";
+import { useUserParams } from "../context/UserParamsContext";
 
 function SettingsView() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const { clearUsers } = useUsers();
+  const { userParams, setUserParams } = useUserParams();
 
   const [isPreferencesOpen, setIsPreferencesOpen] = useState(false);
   const [isProfileSettingsOpen, setIsProfileSettingsOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
-  const [isUserLefty, setIsUserLefty] = useState(false);
 
   const languages = ["ua", "ru", "en"];
   const [currentLangIndex, setCurrentLangIndex] = useState(
@@ -42,7 +43,10 @@ function SettingsView() {
   }
 
   function toggleUserLefty() {
-    setIsUserLefty(!isUserLefty);
+    setUserParams((prevParams) => ({
+      ...prevParams,
+      lefty: !prevParams.lefty,
+    }));
   }
 
   return (
@@ -93,7 +97,11 @@ function SettingsView() {
             </div>
             <div>
               <ButtonOutline onClick={toggleUserLefty}>
-                {isUserLefty ? <span>{t("yes")}</span> : <span>{t("no")}</span>}
+                {userParams.lefty ? (
+                  <span>{t("yes")}</span>
+                ) : (
+                  <span>{t("no")}</span>
+                )}
               </ButtonOutline>
             </div>
           </div>
