@@ -5,6 +5,7 @@ import ScrollToTop from "./router/ScrollToTop";
 import UserContext from "./context/UserContext";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserParamsProvider } from "./context/UserParamsContext";
 
 function MainPageView() {
   const navigate = useNavigate();
@@ -19,22 +20,24 @@ function MainPageView() {
   return (
     <>
       <UserContext>
-        <UserNavBar />
-        <div
-          className="m-0 py-20 3xl:pt-32 px-2 lg:px-48 4xl:px-96 5xl:px-[32rem] 
+        <UserParamsProvider>
+          <UserNavBar />
+          <div
+            className="m-0 py-20 3xl:pt-32 px-2 lg:px-48 4xl:px-96 5xl:px-[32rem] 
           6xl:px-[44rem] 7xl:px-[56rem] 8xl:px-[66rem] items-center"
-        >
-          <div className="flex xl:space-x-4">
-            <div className="w-full max-w-[18rem] hidden xl:block">
-              <UserSideBar />
-            </div>
-            <div className="w-full">
-              <ScrollToTop>
-                <Outlet />
-              </ScrollToTop>
+          >
+            <div className="flex xl:space-x-4">
+              <div className="w-full max-w-[18rem] hidden xl:block">
+                <UserSideBar />
+              </div>
+              <div className="w-full">
+                <ScrollToTop>
+                  <Outlet />
+                </ScrollToTop>
+              </div>
             </div>
           </div>
-        </div>
+        </UserParamsProvider>
       </UserContext>
     </>
   );
