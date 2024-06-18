@@ -65,8 +65,8 @@ function GameProfile() {
                   {game.genre.map((genre, index) => (
                     <span
                       key={index}
-                      className="border-2 text-pale-yellow bg-gray-700  
-                      border-gray-700 px-2 py-1 rounded-xl text-md xxl:text-2xl 4xl:text-3xl"
+                      className="border-2 border-midnight-black bg-purple-400 dark:bg-gray-700 
+                    dark:border-gray-700 px-2 py-1 rounded-xl text-md xxl:text-2xl 4xl:text-3xl"
                     >
                       {genre}
                     </span>
@@ -111,7 +111,7 @@ function GameProfile() {
                 {game.platforms.map((platform, index) => (
                   <span
                     key={index}
-                    className="border-2 border-midnight-black bg-purple-400 dark:bg-gray-700 
+                    className="border-2 border-midnight-black bg-purple-300 dark:bg-gray-700 
                     dark:border-gray-700 px-2 py-1 rounded-xl text-md xxl:text-2xl 4xl:text-3xl"
                   >
                     {platform}
