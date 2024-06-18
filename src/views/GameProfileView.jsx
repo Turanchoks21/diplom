@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import ButtonOutline from "../components/buttons/ButtonOutline";
 import ButtonSolid from "../components/buttons/ButtonSolid";
-import NewsPost from "./../components/wrapers/news/NewsPost";
+import NewsPost from "../components/wrapers/news/NewsPost";
 import GameLogo from "../components/wrapers/news/GameLogo";
 import GameName from "../components/wrapers/news/GameName";
 import NewsTime from "../components/wrapers/news/NewsTime";
@@ -19,10 +19,12 @@ import {
   FaceFrownIcon,
 } from "@heroicons/react/24/outline";
 import { HeartIcon as HeartIconSolid } from "@heroicons/react/20/solid";
+import { useUserParams } from "../context/UserParamsContext";
 
-function GameProfile() {
+function GameProfileView() {
   const { gameName } = useParams();
   const { t } = useTranslation();
+  const { userParams } = useUserParams();
 
   const games = GameData();
   const newsPosts = NewsData();
@@ -146,7 +148,11 @@ function GameProfile() {
                   <div className="flex justify-center">
                     <NewsPhoto src={post.photo} />
                   </div>
-                  <div className="flex justify-end space-x-3">
+                  <div
+                    className={`flex ${
+                      userParams.lefty ? "justify-start" : "justify-end"
+                    } space-x-3 my-2`}
+                  >
                     <NewsButton>
                       <ChatBubbleLeftEllipsisIcon className="h-7 lg:h-8 xxl:h-12" />
                     </NewsButton>
@@ -179,4 +185,4 @@ function GameProfile() {
   );
 }
 
-export default GameProfile;
+export default GameProfileView;
