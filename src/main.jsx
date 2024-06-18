@@ -14,7 +14,7 @@ import ChatsView from "./views/ChatsView.jsx";
 import LikedView from "./views/LikedView.jsx";
 import SettingsView from "./views/SettingsView.jsx";
 import PersonChatView from "./views/PersonChatView.jsx";
-import GameProfile from "./views/GameProfile.jsx";
+import GameProfileView from "./views/GameProfileView.jsx";
 
 const router = createBrowserRouter([
   {
@@ -61,7 +61,7 @@ const router = createBrowserRouter([
       },
       {
         path: ":gameName",
-        element: <GameProfile />,
+        element: <GameProfileView />,
       },
     ],
   },
