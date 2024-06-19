@@ -7,14 +7,25 @@ import {
 } from "@heroicons/react/24/outline";
 import GameData from "../../data/GameData";
 import GameLogo from "../wrapers/news/GameLogo";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import VirtualScroll from "../VirtualScroll";
+import { useUserParams } from "../../context/UserParamsContext";
 
 function PreferencesModal({ isOpen, onClose }) {
   const { t } = useTranslation();
   const games = GameData();
+  const { userParams, setUserParams } = useUserParams();
 
   const [searchGameValue, setSearchGameValue] = useState("");
+  const [preferences, setPreferences] = useState({});
+
+  useEffect(() => {
+    const initialPreferences = games.reduce((acc, game) => {
+      acc[game.id] = userParams.selectedGames.includes(game.name);
+      return acc;
+    }, {});
+    setPreferences(initialPreferences);
+  }, [userParams.selectedGames, games]);
 
   function handleChange(event) {
     setSearchGameValue(event.target.value);
@@ -24,18 +35,24 @@ function PreferencesModal({ isOpen, onClose }) {
     return game.name.toLowerCase().includes(searchGameValue.toLowerCase());
   });
 
-  const [preferences, setPreferences] = useState(
-    games.reduce((acc, game) => {
-      acc[game.id] = game.preference;
-      return acc;
-    }, {})
-  );
+  function handlePreference(gameId, gameName) {
+    setPreferences((prevPreferences) => {
+      const newPreferences = {
+        ...prevPreferences,
+        [gameId]: !prevPreferences[gameId],
+      };
 
-  function handlePreference(gameId) {
-    setPreferences((prevPreferences) => ({
-      ...prevPreferences,
-      [gameId]: !prevPreferences[gameId],
-    }));
+      const selectedGames = Object.keys(newPreferences)
+        .filter((id) => newPreferences[id])
+        .map((id) => games.find((game) => game.id === parseInt(id)).name);
+
+      setUserParams((prevUserParams) => ({
+        ...prevUserParams,
+        selectedGames,
+      }));
+
+      return newPreferences;
+    });
   }
 
   function clearSearchInput() {
@@ -107,7 +124,7 @@ function PreferencesModal({ isOpen, onClose }) {
                     <div className="flex justify-center items-center">
                       <button
                         className="flex justify-center items-center"
-                        onClick={() => handlePreference(game.id)}
+                        onClick={() => handlePreference(game.id, game.name)}
                       >
                         {preferences[game.id] ? (
                           <MinusCircleIcon className="h-8 xxl:h-12 text-red-500" />
