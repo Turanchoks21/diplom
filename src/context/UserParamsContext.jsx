@@ -1,14 +1,18 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
-// Создаем контекст
 const UserParamsContext = createContext();
 
-// Хук для использования контекста
 export const useUserParams = () => useContext(UserParamsContext);
 
-// Провайдер для оборачивания компонентов
 export const UserParamsProvider = ({ children }) => {
-  const [userParams, setUserParams] = useState({ lefty: false });
+  const [userParams, setUserParams] = useState(() => {
+    const savedParams = localStorage.getItem('userParams');
+    return savedParams ? JSON.parse(savedParams) : { lefty: false, selectedGames: [] };
+  });
+
+  useEffect(() => {
+    localStorage.setItem('userParams', JSON.stringify(userParams));
+  }, [userParams]);
 
   return (
     <UserParamsContext.Provider value={{ userParams, setUserParams }}>
