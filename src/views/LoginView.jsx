@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import FormWraper from "../components/forms/FormWraper";
+import FormWraper from "../components/wrapers/forms/FormWraper";
 import FormInput from "../components/inputs/FormInput";
-import TitleWraper from "../components/forms/TitleWraper";
+import TitleWraper from "../components/wrapers/forms/TitleWraper";
 import ButtonOutline from "../components/buttons/ButtonOutline";
 import ButtonSolid from "../components/buttons/ButtonSolid";
-import ButtonWraper from "../components/forms/ButtonWraper";
+import ButtonWraper from "../components/wrapers/forms/ButtonWraper";
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
