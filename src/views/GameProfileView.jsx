@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import GameData from "../data/GameData";
 import NewsData from "../data/NewsData";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ButtonOutline from "../components/buttons/ButtonOutline";
 import ButtonSolid from "../components/buttons/ButtonSolid";
 import NewsPost from "../components/wrapers/news/NewsPost";
@@ -24,7 +24,7 @@ import { useUserParams } from "../context/UserParamsContext";
 function GameProfileView() {
   const { gameName } = useParams();
   const { t } = useTranslation();
-  const { userParams } = useUserParams();
+  const { userParams, setUserParams } = useUserParams();
 
   const games = GameData();
   const newsPosts = NewsData();
@@ -33,12 +33,30 @@ function GameProfileView() {
   const newsPost = newsPosts.filter((find) => find.gameName === gameName);
   const sortPosts = newsPost.sort((a, b) => b.id - a.id);
 
-  const [isSubscribe, setIsSubscribe] = useState(game.preference);
+  const [isSubscribe, setIsSubscribe] = useState(false);
   const [likes, setLikes] = useState({});
 
+  useEffect(() => {
+    setIsSubscribe(userParams.selectedGames.includes(gameName));
+  }, [userParams.selectedGames, gameName]);
+
   function handleSubscribe() {
-    setIsSubscribe(!isSubscribe);
+    setIsSubscribe((prevIsSubscribe) => {
+      const newIsSubscribe = !prevIsSubscribe;
+
+      const updatedSelectedGames = newIsSubscribe
+        ? [...userParams.selectedGames, gameName]
+        : userParams.selectedGames.filter((name) => name !== gameName);
+
+      setUserParams((prevUserParams) => ({
+        ...prevUserParams,
+        selectedGames: updatedSelectedGames,
+      }));
+
+      return newIsSubscribe;
+    });
   }
+
   function handleLikeClick(postId) {
     setLikes((prevLikes) => ({
       ...prevLikes,

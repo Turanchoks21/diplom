@@ -9,26 +9,49 @@ import {
   ChatBubbleLeftEllipsisIcon,
 } from "@heroicons/react/24/outline";
 import { HeartIcon as HeartIconSolid } from "@heroicons/react/20/solid";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NewsData from "./../data/NewsData";
 import { useTranslation } from "react-i18next";
 import ButtonSolid from "./../components/buttons/ButtonSolid";
 import { Link } from "react-router-dom";
 import { useUserParams } from "../context/UserParamsContext";
+import { useLikedPost } from "../context/LikedPostContext";
 
 function NewsView() {
   const [likes, setLikes] = useState({});
   const { t } = useTranslation();
   const posts = NewsData();
   const { userParams } = useUserParams();
-  const sortPosts = posts.sort((a, b) => b.id - a.id);
-  // const posts = [];
+  const { selectedGames } = userParams;
+  const { likedPosts, addLike, removeLike } = useLikedPost();
 
-  function handleLikeClick(postId) {
-    setLikes((prevLikes) => ({
-      ...prevLikes,
-      [postId]: !prevLikes[postId],
-    }));
+  const filteredPosts = posts.filter((post) =>
+    selectedGames.includes(post.gameName)
+  );
+
+  const sortPosts = filteredPosts.sort((a, b) => b.id - a.id);
+
+  useEffect(() => {
+    const initialLikes = likedPosts.reduce((acc, post) => {
+      acc[post.id] = true;
+      return acc;
+    }, {});
+    setLikes(initialLikes);
+  }, [likedPosts]);
+
+  function handleLikeClick(post) {
+    setLikes((prevLikes) => {
+      const isLiked = !prevLikes[post.id];
+      if (isLiked) {
+        addLike(post);
+      } else {
+        removeLike(post.id);
+      }
+      return {
+        ...prevLikes,
+        [post.id]: isLiked,
+      };
+    });
   }
 
   return (
@@ -66,7 +89,7 @@ function NewsView() {
                   <NewsButton>
                     <ChatBubbleLeftEllipsisIcon className="h-7 lg:h-8 xxl:h-12" />
                   </NewsButton>
-                  <NewsButton onClick={() => handleLikeClick(post.id)}>
+                  <NewsButton onClick={() => handleLikeClick(post)}>
                     {likes[post.id] ? (
                       <HeartIconSolid className="h-7 lg:h-8 xxl:h-12 text-red-500" />
                     ) : (
@@ -83,6 +106,9 @@ function NewsView() {
               <div className="flex justify-center items-center py-12">
                 <div className="flex flex-col items-center space-y-4">
                   <span>{t("noNews")}</span>
+                  <div className="border w-full border-blue-purple" />
+                  <span>{t("AddedNoNews")}</span>
+                  <div className="border w-full border-blue-purple" />
                   <ButtonSolid to="/main/settings">{t("addNews")}</ButtonSolid>
                 </div>
               </div>
