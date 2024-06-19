@@ -4,7 +4,6 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import ButtonOutline from "../buttons/ButtonOutline";
 import ButtonSolid from "../buttons/ButtonSolid";
 import PurpleInput from "../inputs/PurpleInput";
-import ButtonWraper from "../forms/ButtonWraper";
 
 function ForgotPasswordModal({ isOpen, onClose }) {
   const { t } = useTranslation();
