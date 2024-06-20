@@ -58,7 +58,7 @@ function PersonChatView() {
           >
             <textarea
               placeholder={message}
-              className="w-full border resize-none focus:outline-none xxl:text-2xl focus:ring-0 bg-transparent"
+              className="w-full resize-none focus:outline-none xxl:text-2xl focus:ring-0 bg-transparent"
             />
             <div
               className={`flex space-x-2 ${
