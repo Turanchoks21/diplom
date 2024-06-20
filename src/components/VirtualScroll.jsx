@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 
-const VirtualScroll = ({
+function VirtualScroll({
   children,
   itemCount,
   viewportHeight,
   rowHeight,
   nodePadding = 0,
-}) => {
+}) {
   const [scrollTop, setScrollTop] = useState(0);
   const viewportRef = useRef(null);
 
@@ -56,6 +56,6 @@ const VirtualScroll = ({
       </div>
     </div>
   );
-};
+}
 
 export default VirtualScroll;

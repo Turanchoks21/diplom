@@ -69,7 +69,7 @@ function LoginView() {
               >
                 {t("forgotPassword")}
               </ButtonOutline>
-              <ButtonOutline to="/register">{t("createUser")}</ButtonOutline>
+              <ButtonOutline type="button" to="/register">{t("createUser")}</ButtonOutline>
             </ButtonWraper>
           </form>
         </FormWraper>

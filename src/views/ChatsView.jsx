@@ -64,9 +64,6 @@ function ChatsView() {
                     </span>
                   </div>
                 </div>
-                <div className="text-blue-purple">
-                  <div>{/* time */}</div>
-                </div>
               </div>
               <div className="border mt-3 border-blue-purple" />
             </Link>

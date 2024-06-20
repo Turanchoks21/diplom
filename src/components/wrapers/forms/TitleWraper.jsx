@@ -1,7 +1,8 @@
 function TitleWraper({ children }) {
   return (
     <>
-      <span className="text-2xl lg:text-3xl xxl:text-5xl pt-2 xxl:pt-0 pb-3 font-semibold text-blue-purple dark:text-pale-yellow">
+      <span className="text-2xl lg:text-3xl xxl:text-5xl pt-2 xxl:pt-0 pb-3 font-semibold 
+      text-blue-purple dark:text-pale-yellow">
         {children}
       </span>
     </>

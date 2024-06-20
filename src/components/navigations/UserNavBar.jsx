@@ -114,8 +114,8 @@ function NavBar() {
             { "-translate-x-full": !isMenuOpen, "translate-x-0": isMenuOpen }
           )}
         >
-          <div className="flex justify-between items-center  gap-3 p-4 border-b-2 border-blue-purple">
-            <UserNick>USER_NICK</UserNick>
+          <div className="flex justify-end items-center  gap-3 p-4 border-b-2 border-blue-purple">
+            
             <ThemButton />
           </div>
 
@@ -130,7 +130,7 @@ function NavBar() {
                 <span>{t("friends")}</span>
               </NavButton>
               <NavButton to="/main/chats" onClick={toggleMenu}>
-                <ChatBubbleLeftRightIcon className="h-8" />{" "}
+                <ChatBubbleLeftRightIcon className="h-8" />
                 <span>{t("chats")}</span>
               </NavButton>
               <NavButton to="/main/liked" onClick={toggleMenu}>

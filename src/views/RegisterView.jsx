@@ -95,7 +95,7 @@ function RegisterView() {
           </FormInput>
           <ButtonWraper>
             <ButtonSolid type="submit">{t("registerUser")}</ButtonSolid>
-            <ButtonOutline to="/login">{t("haveAccount")}</ButtonOutline>
+            <ButtonOutline type="button" to="/login">{t("haveAccount")}</ButtonOutline>
           </ButtonWraper>
         </form>
       </FormWraper>

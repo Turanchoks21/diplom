@@ -12,7 +12,6 @@ function FriendsView() {
 
   const users = UsersData();
   const friends = FriendsData();
-  // const friends = [];
 
   const [isFrindRequest, setIsFrindRequest] = useState(false);
 

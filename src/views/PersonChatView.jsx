@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import FriendsData from "../data/FriendsData";
 import {
-  EllipsisVerticalIcon,
   PaperAirplaneIcon,
   PaperClipIcon,
   ArrowLeftIcon,
@@ -55,18 +54,22 @@ function PersonChatView() {
           <div
             className={`flex justify-between ${
               userParams.lefty ? "flex-row-reverse" : ""
-            } space-x-4 items-center p-2 border-t-2 border-blue-purple`}
+            }  items-center p-2 border-t-2 border-blue-purple`}
           >
             <textarea
               placeholder={message}
-              className="w-full resize-none focus:outline-none xxl:text-2xl focus:ring-0 bg-transparent"
+              className="w-full border resize-none focus:outline-none xxl:text-2xl focus:ring-0 bg-transparent"
             />
-            <PaperClipIcon
-              className={`h-10 md:h-8 xxl:h-12 ${
-                userParams.lefty ? "pr-2" : ""
+            <div
+              className={`flex space-x-2 ${
+                userParams.lefty ? "flex-row-reverse" : ""
               }`}
-            />
-            <PaperAirplaneIcon className="h-10 md:h-8 xxl:h-12" />
+            >
+              <PaperClipIcon
+                className={`h-8 xxl:h-12 ${userParams.lefty ? "pr-2" : ""}`}
+              />
+              <PaperAirplaneIcon className={`h-8 xxl:h-12 ${userParams.lefty ? "pr-2" : ""}`} />
+            </div>
           </div>
         </div>
       </div>
