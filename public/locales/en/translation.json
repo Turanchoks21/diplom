@@ -63,5 +63,7 @@
   "sendAnEmail": "Send an email",
   "AddedNoNews": "If it's added and there's no news. Then there is no news for this game yet",
   "noLikedPosts": "You haven't liked anything yet",
-  "backToNews": "Back to news"
+  "backToNews": "Back to news",
+  "comment": "Commentary",
+  "noComments": "No comments"
 }
