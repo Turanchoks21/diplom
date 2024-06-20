@@ -63,11 +63,11 @@ const router = createBrowserRouter([
         path: ":gameName",
         element: <GameProfileView />,
       },
+      {
+        path: "chats/:userNickname",
+        element: <PersonChatView />,
+      },
     ],
-  },
-  {
-    path: "main/chats/:userNickname",
-    element: <PersonChatView />,
   },
 ]);
 
