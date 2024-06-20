@@ -31,9 +31,9 @@ export default function Example() {
             focus:outline-none focus:ring-0 focus:ring-offset-0"
           >
             {isSolid ? (
-              <SolidGlobe className="h-8 xxl:h-12" />
+              <SolidGlobe className="h-8 xxl:h-12 3xl:h-20" />
             ) : (
-              <OutlineGlobo className="h-8 xxl:h-12" />
+              <OutlineGlobo className="h-8 xxl:h-12 3xl:h-20" />
             )}
           </Popover.Button>
 
