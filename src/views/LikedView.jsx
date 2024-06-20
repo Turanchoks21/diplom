@@ -1,3 +1,4 @@
+import React from "react";
 import { useTranslation } from "react-i18next";
 import { useUserParams } from "../context/UserParamsContext";
 import { useLikedPost } from "../context/LikedPostContext";
@@ -7,62 +8,82 @@ import GameLogo from "../components/wrapers/news/GameLogo";
 import NewsTime from "../components/wrapers/news/NewsTime";
 import NewsPhoto from "../components/wrapers/news/NewsPhoto";
 import NewsButton from "../components/buttons/NewsButton";
-import {
-  HeartIcon,
-  ChatBubbleLeftEllipsisIcon,
-} from "@heroicons/react/24/outline";
+import { ChatBubbleLeftEllipsisIcon } from "@heroicons/react/24/outline";
 import { HeartIcon as HeartIconSolid } from "@heroicons/react/20/solid";
 import ButtonSolid from "./../components/buttons/ButtonSolid";
 import { Link } from "react-router-dom";
+import CommentsModal from "../components/modals/CommentsModal";
+import { useState } from "react";
 
 function LikedView() {
   const { t } = useTranslation();
   const { userParams } = useUserParams();
   const { likedPosts, removeLike } = useLikedPost();
 
+  const [commentsOpen, setCommentsOpen] = useState({});
+
   const handleLikeClick = (postId) => {
     removeLike(postId);
   };
+
+  function handleComments(postId) {
+    setCommentsOpen((prevCommentsOpen) => ({
+      ...prevCommentsOpen,
+      [postId]: !prevCommentsOpen[postId],
+    }));
+  }
 
   return (
     <>
       <div className="flex flex-col w-full max-w-5xl 3xl:max-w-[70rem] mx-auto space-y-4">
         {likedPosts.length > 0 ? (
           likedPosts.map((post) => (
-            <NewsPost key={post.id}>
-              <div className="flex justify-between">
-                <Link
-                  to={`/main/${post.gameName}`}
-                  className="flex justify-between space-x-3"
-                >
-                  <GameLogo src={post.gameLogo} />
-                  <GameName text={post.gameName} />
-                </Link>
-                <div className="flex flex-col items-end">
-                  {post.times.map((time, index) => (
-                    <NewsTime key={index} time={time} />
-                  ))}
+            <React.Fragment key={post.id}>
+              <NewsPost>
+                <div className="flex justify-between">
+                  <Link
+                    to={`/main/${post.gameName}`}
+                    className="flex justify-between space-x-3"
+                  >
+                    <GameLogo src={post.gameLogo} />
+                    <GameName text={post.gameName} />
+                  </Link>
+                  <div className="flex flex-col items-end">
+                    {post.times.map((time, index) => (
+                      <NewsTime key={index} time={time} />
+                    ))}
+                  </div>
                 </div>
-              </div>
-              <div className="text-midnight-black dark:text-white xxl:text-2xl">
-                {post.content}
-              </div>
-              <div className="flex justify-center my-2">
-                <NewsPhoto src={post.photo} />
-              </div>
-              <div
-                className={`flex ${
-                  userParams.lefty ? "justify-start" : "justify-end"
-                } space-x-3 my-2`}
-              >
-                <NewsButton>
-                  <ChatBubbleLeftEllipsisIcon className="h-7 lg:h-8 xxl:h-12" />
-                </NewsButton>
-                <NewsButton onClick={() => handleLikeClick(post.id)}>
-                  <HeartIconSolid className="h-7 lg:h-8 xxl:h-12 text-red-500" />
-                </NewsButton>
-              </div>
-            </NewsPost>
+                <div className="text-midnight-black dark:text-white xxl:text-2xl">
+                  {post.content}
+                </div>
+                <div className="flex justify-center my-2">
+                  <NewsPhoto src={post.photo} />
+                </div>
+                <div
+                  className={`flex ${
+                    userParams.lefty ? "justify-start" : "justify-end"
+                  } space-x-3 my-2`}
+                >
+                  <NewsButton>
+                    <ChatBubbleLeftEllipsisIcon
+                      onClick={() => handleComments(post.id)}
+                      className="h-7 lg:h-8 xxl:h-12"
+                    />
+                  </NewsButton>
+                  <NewsButton onClick={() => handleLikeClick(post.id)}>
+                    <HeartIconSolid className="h-7 lg:h-8 xxl:h-12 text-red-500" />
+                  </NewsButton>
+                </div>
+              </NewsPost>
+              <CommentsModal
+                GameTitle={post.gameName}
+                src={post.photo}
+                content={post.content}
+                isOpen={commentsOpen[post.id]}
+                onClose={() => handleComments(post.id)}
+              />
+            </React.Fragment>
           ))
         ) : (
           <div className="text-midnight-black dark:text-pale-yellow font-semibold text-xl xxl:text-3xl">

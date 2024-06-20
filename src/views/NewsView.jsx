@@ -16,6 +16,7 @@ import ButtonSolid from "./../components/buttons/ButtonSolid";
 import { Link } from "react-router-dom";
 import { useUserParams } from "../context/UserParamsContext";
 import { useLikedPost } from "../context/LikedPostContext";
+import CommentsModal from "../components/modals/CommentsModal";
 
 function NewsView() {
   const [likes, setLikes] = useState({});
@@ -24,6 +25,7 @@ function NewsView() {
   const { userParams } = useUserParams();
   const { selectedGames } = userParams;
   const { likedPosts, addLike, removeLike } = useLikedPost();
+  const [commentsOpen, setCommentsOpen] = useState({});
 
   const filteredPosts = posts.filter((post) =>
     selectedGames.includes(post.gameName)
@@ -54,52 +56,73 @@ function NewsView() {
     });
   }
 
+  function handleComments(postId) {
+    setCommentsOpen((prevCommentsOpen) => ({
+      ...prevCommentsOpen,
+      [postId]: !prevCommentsOpen[postId],
+    }));
+  }
+
   return (
     <>
       <div className="w-full lg:max-w-5xl 3xl:max-w-[70rem] mx-auto">
         {sortPosts.length !== 0 ? (
-          <div className="flex flex-col space-y-4">
-            {sortPosts.map((post) => (
-              <NewsPost key={post.id}>
-                <div className="flex justify-between">
-                  <Link
-                    to={`/main/${post.gameName}`}
-                    className="flex justify-between space-x-3"
-                  >
-                    <GameLogo src={post.gameLogo} />
-                    <GameName text={post.gameName} />
-                  </Link>
-                  <div className="flex flex-col items-end">
-                    {post.times.map((time, index) => (
-                      <NewsTime key={index} time={time} />
-                    ))}
-                  </div>
+          <>
+            <div className="flex flex-col space-y-4">
+              {sortPosts.map((post) => (
+                <div key={post.id}>
+                  <NewsPost>
+                    <div className="flex justify-between">
+                      <Link
+                        to={`/main/${post.gameName}`}
+                        className="flex justify-between space-x-3"
+                      >
+                        <GameLogo src={post.gameLogo} />
+                        <GameName text={post.gameName} />
+                      </Link>
+                      <div className="flex flex-col items-end">
+                        {post.times.map((time, index) => (
+                          <NewsTime key={index} time={time} />
+                        ))}
+                      </div>
+                    </div>
+                    <div className="text-midnight-black dark:text-white xxl:text-2xl">
+                      {post.content}
+                    </div>
+                    <div className="flex justify-center my-2">
+                      <NewsPhoto src={post.photo} />
+                    </div>
+                    <div
+                      className={`flex ${
+                        userParams.lefty ? "justify-start" : "justify-end"
+                      } space-x-3 my-2`}
+                    >
+                      <NewsButton>
+                        <ChatBubbleLeftEllipsisIcon
+                          onClick={() => handleComments(post.id)}
+                          className="h-7 lg:h-8 xxl:h-12"
+                        />
+                      </NewsButton>
+                      <NewsButton onClick={() => handleLikeClick(post)}>
+                        {likes[post.id] ? (
+                          <HeartIconSolid className="h-7 lg:h-8 xxl:h-12 text-red-500" />
+                        ) : (
+                          <HeartIcon className="h-7 lg:h-8 xxl:h-12" />
+                        )}
+                      </NewsButton>
+                    </div>
+                  </NewsPost>
+                  <CommentsModal
+                    GameTitle={post.gameName}
+                    src={post.photo}
+                    conten={post.content}
+                    isOpen={commentsOpen[post.id]}
+                    onClose={() => handleComments(post.id)}
+                  />
                 </div>
-                <div className="text-midnight-black dark:text-white xxl:text-2xl">
-                  {post.content}
-                </div>
-                <div className="flex justify-center my-2">
-                  <NewsPhoto src={post.photo} />
-                </div>
-                <div
-                  className={`flex ${
-                    userParams.lefty ? "justify-start" : "justify-end"
-                  } space-x-3 my-2`}
-                >
-                  <NewsButton>
-                    <ChatBubbleLeftEllipsisIcon className="h-7 lg:h-8 xxl:h-12" />
-                  </NewsButton>
-                  <NewsButton onClick={() => handleLikeClick(post)}>
-                    {likes[post.id] ? (
-                      <HeartIconSolid className="h-7 lg:h-8 xxl:h-12 text-red-500" />
-                    ) : (
-                      <HeartIcon className="h-7 lg:h-8 xxl:h-12" />
-                    )}
-                  </NewsButton>
-                </div>
-              </NewsPost>
-            ))}
-          </div>
+              ))}
+            </div>
+          </>
         ) : (
           <div className="text-midnight-black dark:text-pale-yellow font-semibold text-xl xxl:text-3xl">
             <NewsPost>
