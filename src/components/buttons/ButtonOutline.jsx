@@ -26,7 +26,8 @@ function ButtonOutline({ to, children, type, onClick }) {
     border-midnight-black dark:border-pale-yellow hover:text-blue-purple
     dark:hover:text-blue-purple hover:border-blue-purple dark:hover:border-blue-purple rounded-xl"
     >
-      {children}
+      {children} 
+      {/* text */}
     </button>
   );
 }
