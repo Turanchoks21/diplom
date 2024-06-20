@@ -20,12 +20,14 @@ function PreferencesModal({ isOpen, onClose }) {
   const [preferences, setPreferences] = useState({});
 
   useEffect(() => {
-    const initialPreferences = games.reduce((acc, game) => {
-      acc[game.id] = userParams.selectedGames.includes(game.name);
-      return acc;
-    }, {});
-    setPreferences(initialPreferences);
-  }, [userParams.selectedGames, games]);
+    if (isOpen) {
+      const initialPreferences = games.reduce((acc, game) => {
+        acc[game.id] = userParams.selectedGames.includes(game.name);
+        return acc;
+      }, {});
+      setPreferences(initialPreferences);
+    }
+  }, [isOpen, games, userParams.selectedGames]);
 
   function handleChange(event) {
     setSearchGameValue(event.target.value);
@@ -73,18 +75,20 @@ function PreferencesModal({ isOpen, onClose }) {
           onClick={onClose}
         ></div>
         <div
-          className="bg-lavender-mist dark:bg-midnight-black rounded-xl overflow-hidden shadow-xl
-          transform transition-all max-w-2xl w-full border-2 border-blue-purple"
+          className="bg-lavender-mist dark:bg-midnight-black rounded-xl 
+        overflow-hidden shadow-xl transform transition-all max-w-2xl w-full border-2 border-blue-purple"
         >
-          <div className="bg-lavender-mist dark:bg-midnight-black px-4 py-5 border-b-2 border-blue-purple sm:px-6 sm:py-4">
+          <div
+            className="bg-lavender-mist dark:bg-midnight-black px-4 py-5 border-b-2 
+          border-blue-purple sm:px-6 sm:py-4"
+          >
             <div className="flex justify-between items-center">
-              <span className="text-xl xxl:text-3xl leading-6 ">
+              <span className="text-xl xxl:text-3xl leading-6">
                 {t("preferences")}
               </span>
               <button
                 type="button"
-                className=" 
-                focus:outline-none focus:ring-0 focus:ring-offset-0"
+                className="focus:outline-none focus:ring-0 focus:ring-offset-0"
                 onClick={onClose}
               >
                 <XMarkIcon className="h-8 xxl:h-12" />
@@ -95,9 +99,8 @@ function PreferencesModal({ isOpen, onClose }) {
             <div className="flex justify-between w-full space-x-3">
               <MagnifyingGlassIcon className="h-8 xxl:h-12" />
               <input
-                className="w-full focus:outline-none bg-transparent
-                text-lg xxl:text-2xl border-b-2 border-midnight-black
-               dark:border-pale-yellow"
+                className="w-full focus:outline-none bg-transparent text-lg xxl:text-2xl border-b-2 
+                border-midnight-black dark:border-pale-yellow"
                 value={searchGameValue}
                 onChange={handleChange}
               />
@@ -114,7 +117,8 @@ function PreferencesModal({ isOpen, onClose }) {
               {filteredGames.map((game) => (
                 <div
                   key={game.id}
-                  className="flex justify-center items-center w-full border-2 rounded-xl p-2 border-blue-purple mb-4"
+                  className="flex justify-center items-center w-full border-2 rounded-xl p-2 
+                  border-blue-purple mb-4"
                 >
                   <div className="flex justify-between w-full">
                     <div className="flex justify-between items-center space-x-3">
