@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import ThemButton from "./../buttons/ThemButton";
 import NavButton from "../buttons/NavButton";
@@ -6,7 +6,6 @@ import Logo from "../Logo";
 import { Link } from "react-router-dom";
 import clsx from "clsx";
 import UserNick from "../wrapers/users/UserNick";
-
 import {
   Bars3Icon,
   NewspaperIcon,
@@ -20,10 +19,18 @@ import {
 function NavBar() {
   const { t } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [avatar, setAvatar] = useState(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  useEffect(() => {
+    const storedAvatar = localStorage.getItem("avatar");
+    if (storedAvatar) {
+      setAvatar(storedAvatar);
+    }
+  }, []);
 
   return (
     <>
@@ -55,7 +62,15 @@ function NavBar() {
               <div className="hidden xl:block">
                 <ThemButton />
               </div>
-              <UserCircleIcon className="h-8 xxl:h-12 3xl:h-20 text-blue-purple dark:text-pale-yellow" />
+              {avatar ? (
+                <img
+                  src={avatar}
+                  alt="User Avatar"
+                  className="h-8 w-8 xxl:h-12 xxl:w-12 3xl:h-20 3xl:w-20 rounded-full"
+                />
+              ) : (
+                <UserCircleIcon className="h-8 xxl:h-12 3xl:h-20 text-blue-purple dark:text-pale-yellow" />
+              )}
             </div>
           </div>
         </div>
