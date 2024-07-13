@@ -6,6 +6,7 @@ function VirtualScroll({
   viewportHeight,
   rowHeight,
   nodePadding = 0,
+  itemHeight,
 }) {
   const [scrollTop, setScrollTop] = useState(0);
   const viewportRef = useRef(null);
@@ -48,7 +49,7 @@ function VirtualScroll({
           style={{ transform: `translateY(${offsetY}px)` }}
         >
           {visibleChildren.map((child, index) => (
-            <div key={startNode + index} className="h-[100px]">
+            <div key={startNode + index} className={itemHeight}>
               {child}
             </div>
           ))}
