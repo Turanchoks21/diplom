@@ -42,7 +42,7 @@ function CommentsModal({ isOpen, onClose, GameTitle }) {
       setComments([...comments, commentData]);
       setNewComment("");
     }
-  };
+  }
 
   if (!isOpen) return null;
 
@@ -61,7 +61,10 @@ function CommentsModal({ isOpen, onClose, GameTitle }) {
           className="bg-lavender-mist dark:bg-midnight-black rounded-xl overflow-hidden shadow-xl
           transform transition-all max-w-2xl w-full border-2 border-blue-purple"
         >
-          <div className="bg-lavender-mist dark:bg-midnight-black px-4 py-5 border-b-2 border-blue-purple sm:px-6 sm:py-4">
+          <div
+            className="bg-lavender-mist dark:bg-midnight-black px-4 py-5 border-b-2 
+              border-blue-purple sm:px-6 sm:py-4"
+          >
             <div className="flex justify-between items-center">
               <span className="text-xl xxl:text-3xl leading-6 ">
                 {GameTitle}
@@ -77,7 +80,10 @@ function CommentsModal({ isOpen, onClose, GameTitle }) {
             </div>
           </div>
           {comments.length === 0 ? (
-            <div className="flex w-full justify-center p-4 md:p-5 text-midnight-black dark:text-pale-yellow font-semibold">
+            <div
+              className="flex w-full justify-center p-4 md:p-5 text-midnight-black 
+              dark:text-pale-yellow font-semibold"
+            >
               <span>{t("noComments")}</span>
             </div>
           ) : (
@@ -85,28 +91,30 @@ function CommentsModal({ isOpen, onClose, GameTitle }) {
               {comments.map((comment, index) => (
                 <div
                   key={index}
-                  className="bg-white dark:bg-gray-800 p-2 mb-2 rounded-md  whitespace-normal"
+                  className="bg-white dark:bg-gray-800 p-2 mb-2 rounded-md"
                 >
                   <div className="flex items-start">
-                    {comment.avatar ? (
-                      <img src={comment.avatar} className="h-12 rounded-full" />
-                    ) : (
-                      <UserCircleIcon className="h-12" />
-                    )}
+                    <div>
+                      {comment.avatar ? (
+                        <img
+                          src={comment.avatar}
+                          className="h-12 xxl:h-16 rounded-full"
+                        />
+                      ) : (
+                        <UserCircleIcon className="h-12 xxl:h-16" />
+                      )}
+                    </div>
 
                     <div className="md:pl-2">
-                      <div className="dark:text-pale-yellow font-semibold">
+                      <div className="dark:text-pale-yellow font-semibold xxl:text-xl 3xl:text-3xl">
                         {comment.nick}
                       </div>
-                      <div
-                        className="break-words break-all dark:text-white"
-                        style={{ wordBreak: "break-word" }}
-                      >
+                      <pre className="whitespace-pre-wrap break-words max-w-lg xxl:text-xl 3xl:text-3xl font-sans dark:text-white">
                         {comment.text}
-                      </div>
+                      </pre>
                     </div>
                   </div>
-                  <div className="flex justify-end text-gray-500 text-sm">
+                  <div className="flex justify-end text-gray-500 text-xs xxl:text-md 3xl:text-xl">
                     {comment.time}
                   </div>
                 </div>
