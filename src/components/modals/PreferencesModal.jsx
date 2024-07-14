@@ -9,6 +9,7 @@ import GameData from "../../data/GameData";
 import GameLogo from "../wrapers/news/GameLogo";
 import { useState, useEffect } from "react";
 import { useUserParams } from "../../context/UserParamsContext";
+import { Link } from "react-router-dom";
 
 function PreferencesModal({ isOpen, onClose }) {
   const { t } = useTranslation();
@@ -75,7 +76,7 @@ function PreferencesModal({ isOpen, onClose }) {
         ></div>
         <div
           className="bg-lavender-mist dark:bg-midnight-black rounded-xl 
-        overflow-hidden shadow-xl transform transition-all max-w-2xl w-full border-2 border-blue-purple"
+          overflow-hidden shadow-xl transform transition-all max-w-2xl w-full border-2 border-blue-purple"
         >
           <div
             className="bg-lavender-mist dark:bg-midnight-black px-4 py-5 border-b-2 
@@ -114,10 +115,13 @@ function PreferencesModal({ isOpen, onClose }) {
                   border-blue-purple mb-4"
               >
                 <div className="flex justify-between w-full">
-                  <div className="flex justify-between items-center space-x-3">
+                  <Link
+                    to={`/main/${game.name}`}
+                    className="flex justify-between items-center space-x-3"
+                  >
                     <GameLogo src={game.logo} />
                     <span>{game.name}</span>
-                  </div>
+                  </Link>
                   <div className="flex justify-center items-center">
                     <button
                       className="flex justify-center items-center"
