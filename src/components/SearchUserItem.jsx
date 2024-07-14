@@ -20,7 +20,7 @@ function SearchUserItem({ user }) {
               </div>
             </div>
             <div className="flex space-x-4">
-              <UserPlusIcon className="h-8 xxl:h-12 text-green-500" />
+              <UserPlusIcon className="h-8 xxl:h-12 text-green-500 transition-all hover:scale-110" />
             </div>
           </div>
         </div>
